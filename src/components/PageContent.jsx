@@ -1,13 +1,16 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useContext } from "react";
 import "../styles.css";
 import SubHeader from "./SubHeader";
 import Filter from "./Filter";
 import ShoesGrid from "./ShoesGrid";
 import Pagination from "./Pagination";
+import SelectedShoeContext from "../context/SelectedShoeContext";
 
 export default function PageContent({ shoes, category }) {
   const [shoeResults, setShoeResults] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
+  const { selectedShoe, setSelectedShoe } = useContext(SelectedShoeContext);
+
   let shoeCount = shoeResults.length;
 
   const today = new Date();
@@ -53,16 +56,22 @@ export default function PageContent({ shoes, category }) {
 
   return (
     <div className="container">
-      <SubHeader category={category}></SubHeader>
-      <Filter
-        shoes={categorizedShoes}
-        shoeResults={(results) => setShoeResults(results)}
-      ></Filter>
-      <ShoesGrid shoes={currentItems} shoeCount={shoeCount}></ShoesGrid>
-      <Pagination
-        shoes={shoeResults}
-        currentShoes={(items) => setCurrentItems(items)}
-      ></Pagination>
+      {selectedShoe ? (
+        <h1>Selected a shoe</h1>
+      ) : (
+        <div>
+          <SubHeader category={category}></SubHeader>
+          <Filter
+            shoes={categorizedShoes}
+            shoeResults={(results) => setShoeResults(results)}
+          ></Filter>
+          <ShoesGrid shoes={currentItems} shoeCount={shoeCount}></ShoesGrid>
+          <Pagination
+            shoes={shoeResults}
+            currentShoes={(items) => setCurrentItems(items)}
+          ></Pagination>
+        </div>
+      )}
     </div>
   );
 }

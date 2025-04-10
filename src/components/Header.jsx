@@ -1,12 +1,13 @@
 import "../styles.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import SelectedShoeContext from "../context/SelectedShoeContext";
 
 export default function Header({ category }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [subMenuIsOpen, setSubMenuIsOpen] = useState();
   const [subMenu, setSubMenu] = useState("");
   const [searchIsOpen, setSearchIsOpen] = useState(false);
+  const { selectedShoe, setSelectedShoe } = useContext(SelectedShoeContext);
 
   const toggleMenu = () => {
     setMenuIsOpen(!menuIsOpen);
@@ -68,6 +69,7 @@ export default function Header({ category }) {
           <button
             onClick={() => {
               category("New Releases");
+              setSelectedShoe(null);
               toggleMenu();
             }}
           >

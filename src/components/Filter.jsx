@@ -103,9 +103,6 @@ export default function Filter({ shoes, shoeResults }) {
   };
 
   const matchesGender = (shoe, gender) => {
-    //remove kids filter group if a gender is selected
-    const list = document.getElementById("kidsDiv").classList;
-    gender.length > 0 ? list.add("hide") : list.remove("hide");
     return (
       gender.length === 0 ||
       gender.some(
@@ -115,9 +112,6 @@ export default function Filter({ shoes, shoeResults }) {
   };
 
   const matchesKids = (shoe, kids) => {
-    //remove gender filter group if kids is selected
-    const list = document.getElementById("genderDiv").classList;
-    kids.length > 0 ? list.add("hide") : list.remove("hide");
     if (shoe.kids) {
       return (
         kids.length === 0 ||
@@ -239,7 +233,7 @@ export default function Filter({ shoes, shoeResults }) {
           <div className="filter-content">
             <h2>FILTER BY</h2>
 
-            <div className="filter-group" id="genderDiv">
+            <div className={`filter-group ${kids.length > 0 ? "hide" : ""}`}>
               <h3>Gender</h3>
               <div className="filter-options">
                 <label>
@@ -265,7 +259,7 @@ export default function Filter({ shoes, shoeResults }) {
               </div>
             </div>
 
-            <div className="filter-group" id="kidsDiv">
+            <div className={`filter-group ${gender.length > 0 ? "hide" : ""}`}>
               <h3>Kids</h3>
               <div className="filter-options">
                 <label>

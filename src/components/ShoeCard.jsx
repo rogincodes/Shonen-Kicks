@@ -1,8 +1,16 @@
+import { useContext } from "react";
 import "../styles.css";
+import SelectedShoeContext from "../context/SelectedShoeContext";
 
 export default function ShoeCard({ shoe }) {
+  const { selectedShoe, setSelectedShoe } = useContext(SelectedShoeContext);
+
   return (
-    <div className="shoe-card">
+    <div
+      key={shoe.id}
+      className="shoe-card"
+      onClick={() => setSelectedShoe(shoe)}
+    >
       <img src={shoe.image} alt={shoe.name} />
       <div className="shoe-content">
         <p className="shoe-anime">{shoe.anime}</p>

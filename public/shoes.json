@@ -628,7 +628,7 @@
     "image": "./shoes/sasuke1.png",
     "releaseDate": "2025-02-22",
     "bestSeller": false,
-    "onSale": true
+    "onSale": false
   },
   {
     "id": 52,
@@ -713,7 +713,7 @@
     "image": "./shoes/killua1.png",
     "releaseDate": "2025-03-20",
     "bestSeller": false,
-    "onSale": true
+    "onSale": false
   },
   {
     "id": 59,

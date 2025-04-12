@@ -7,7 +7,7 @@ export default function Header({ category }) {
   const [subMenuIsOpen, setSubMenuIsOpen] = useState();
   const [subMenu, setSubMenu] = useState("");
   const [searchIsOpen, setSearchIsOpen] = useState(false);
-  const { selectedShoe, setSelectedShoe } = useContext(SelectedShoeContext);
+  const { setSelectedShoe } = useContext(SelectedShoeContext);
 
   const toggleMenu = () => {
     setMenuIsOpen(!menuIsOpen);
@@ -39,7 +39,7 @@ export default function Header({ category }) {
         </div>
 
         <div className="top-buttons">
-          <button className="icons" onClick={toggleSearch}>
+          <button className="icons">
             <img src="icons/search-all.png" alt="Search" />
           </button>
 
@@ -87,6 +87,7 @@ export default function Header({ category }) {
           <button
             onClick={() => {
               category("Best Sellers");
+              setSelectedShoe(null);
               toggleMenu();
             }}
           >
@@ -95,6 +96,7 @@ export default function Header({ category }) {
           <button
             onClick={() => {
               category("Kicks On Sale");
+              setSelectedShoe(null);
               toggleMenu();
             }}
           >
@@ -128,6 +130,7 @@ export default function Header({ category }) {
                   category(
                     `${subMenu}${subMenu !== "Kids" ? "'s" : "'"} Kicks`
                   );
+                  setSelectedShoe(null);
                   closeMenu();
                 }}
               >
@@ -138,6 +141,7 @@ export default function Header({ category }) {
                   category(
                     `${subMenu}${subMenu !== "Kids" ? "'s" : "'"} new releases`
                   );
+                  setSelectedShoe(null);
                   closeMenu();
                 }}
               >
@@ -148,6 +152,7 @@ export default function Header({ category }) {
                   category(
                     `${subMenu}${subMenu !== "Kids" ? "'s" : "'"} Best Sellers`
                   );
+                  setSelectedShoe(null);
                   closeMenu();
                 }}
               >
@@ -158,6 +163,7 @@ export default function Header({ category }) {
                   category(
                     `${subMenu}${subMenu !== "Kids" ? "'s" : "'"} On Sale`
                   );
+                  setSelectedShoe(null);
                   closeMenu();
                 }}
               >

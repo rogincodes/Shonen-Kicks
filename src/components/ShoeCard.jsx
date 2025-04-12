@@ -3,7 +3,7 @@ import "../styles.css";
 import SelectedShoeContext from "../context/SelectedShoeContext";
 
 export default function ShoeCard({ shoe }) {
-  const { selectedShoe, setSelectedShoe } = useContext(SelectedShoeContext);
+  const { setSelectedShoe } = useContext(SelectedShoeContext);
 
   return (
     <div
@@ -14,7 +14,16 @@ export default function ShoeCard({ shoe }) {
       <img src={shoe.image} alt={shoe.name} />
       <div className="shoe-content">
         <p className="shoe-anime">{shoe.anime}</p>
-        <p className="shoe-name">{shoe.name}</p>
+        <p className="shoe-name">
+          {shoe.name}{" "}
+          <span>
+            {shoe.kids
+              ? "(KIDS')"
+              : shoe.gender === "Men"
+              ? "(MEN'S)"
+              : "(WOMEN'S)"}
+          </span>
+        </p>
         <div className="price-container">
           <p className={`shoe-price ${shoe.onSale ? "markdown" : ""}`}>
             ${shoe.price}

@@ -1,15 +1,16 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import "../styles.css";
 import SubHeader from "./SubHeader";
 import Filter from "./Filter";
 import ShoesGrid from "./ShoesGrid";
 import Pagination from "./Pagination";
 import SelectedShoeContext from "../context/SelectedShoeContext";
+import ShoeDetails from "./ShoeDetails";
 
 export default function PageContent({ shoes, category }) {
   const [shoeResults, setShoeResults] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
-  const { selectedShoe, setSelectedShoe } = useContext(SelectedShoeContext);
+  const { selectedShoe } = useContext(SelectedShoeContext);
 
   let shoeCount = shoeResults.length;
 
@@ -18,7 +19,7 @@ export default function PageContent({ shoes, category }) {
     const d1 = new Date(date1);
     const d2 = new Date(date2);
     if (d1 > today || d2 > today) {
-      return 80; // return a number greater than 60
+      return 91; // return a number greater than 90
     }
     const diffTime = Math.abs(d2 - d1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -26,7 +27,7 @@ export default function PageContent({ shoes, category }) {
   };
 
   const isNewRelease = (shoe) => {
-    return getDaysDifference(today, shoe.releaseDate) <= 60;
+    return getDaysDifference(today, shoe.releaseDate) <= 90;
   };
 
   const categorizedShoes = shoes.filter((shoe) => {
@@ -54,10 +55,14 @@ export default function PageContent({ shoes, category }) {
     return categoryFilters[category] ? categoryFilters[category](shoe) : true;
   });
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [selectedShoe]);
+
   return (
     <div className="container">
       {selectedShoe ? (
-        <h1>Selected a shoe</h1>
+        <ShoeDetails></ShoeDetails>
       ) : (
         <div>
           <SubHeader category={category}></SubHeader>

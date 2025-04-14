@@ -10,7 +10,8 @@
     "releaseDate": "2025-01-31",
     "bestSeller": true,
     "onSale": true,
-    "salePrice": 125
+    "salePrice": 125,
+    "description": "A shoe pulsing with unstable psychic energy, caught between calm restraint and overwhelming emotion. Wears like a quiet storm ready to erupt — just like Mob on the edge."
   },
   {
     "id": 2,
@@ -23,7 +24,8 @@
     "releaseDate": "2025-02-19",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 90
+    "salePrice": 90,
+    "description": "Graceful and deadly, this shoe moves with the precision of a swordmaster mid-flash step. Every step feels like slicing through air — swift, silent, unstoppable."
   },
   {
     "id": 3,
@@ -35,7 +37,8 @@
     "image": "./shoes/zenitsu1.png",
     "releaseDate": "2025-01-16",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Built for bursts of blinding speed, this shoe hums with the tension of untapped potential. When it moves, it’s lightning — sudden, loud, and gone before you even knew it struck."
   },
   {
     "id": 4,
@@ -47,7 +50,8 @@
     "image": "./shoes/kanao1.png",
     "releaseDate": "2025-02-04",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "A delicate balance of grace and strength, these sneakers capture Kanao's quiet determination. With every step, they radiate a calm, poised energy. They embody the beauty of petals falling, yet hold the power of something much stronger."
   },
   {
     "id": 5,
@@ -59,7 +63,8 @@
     "image": "./shoes/luffy1.png",
     "releaseDate": "2025-03-03",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "A rugged, bold design that captures Luffy’s free spirit and adventurous heart. Every step is a journey, unbound and driven by a hunger for the unknown. These shoes move with the same confidence as a captain chasing his dreams."
   },
   {
     "id": 6,
@@ -72,7 +77,8 @@
     "releaseDate": "2025-01-20",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 150
+    "salePrice": 150,
+    "description": "Tough, wild, and built for battle, these boots mirror Inosuke’s untamed strength. They’re designed to crush anything in their path, with a raw, primal energy that echoes the beast within. Unleash the beast with every step."
   },
   {
     "id": 7,
@@ -85,7 +91,8 @@
     "releaseDate": "2025-02-21",
     "bestSeller": true,
     "onSale": true,
-    "salePrice": 80
+    "salePrice": 80,
+    "description": "These kicks combine practicality with a touch of whimsy, much like Chopper himself. They're ready for any adventure, offering quick comfort and reliable support with a playful nod to his healing nature. Perfect for a doctor on the move."
   },
   {
     "id": 8,
@@ -98,7 +105,8 @@
     "releaseDate": "2025-02-23",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 100
+    "salePrice": 100,
+    "description": "Elegant and composed, these shoes leave a trail of icy precision with every stride. Inspired by Rukia's cold determination, they combine sleek design with a chill that’s both beautiful and deadly. Every step feels like cutting through a frozen world."
   },
   {
     "id": 9,
@@ -111,7 +119,8 @@
     "releaseDate": "2025-01-28",
     "bestSeller": true,
     "onSale": true,
-    "salePrice": 120
+    "salePrice": 120,
+    "description": "Bold and sharp, these shoes capture Zoro’s unwavering focus and mastery of the sword. With a fierce green design, they’re built for strength, stability, and the relentless pursuit of perfection. Each step is a slice through the air, steady and unstoppable."
   },
   {
     "id": 10,
@@ -123,7 +132,8 @@
     "image": "./shoes/nami1.png",
     "releaseDate": "2025-03-10",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Smart, sleek, and always on the move, these sneakers reflect Nami’s sharp mind and adventurous spirit. Designed for precision and agility, they adapt to any terrain, just like a skilled navigator charting a course through the unknown. Every step is a calculated move toward the next adventure."
   },  
   {
     "id": 11,
@@ -135,7 +145,8 @@
     "image": "./shoes/nezuko1.png",
     "releaseDate": "2025-01-28",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Blending strength with serenity, these boots reflect Nezuko’s quiet resilience. The bamboo-inspired design brings a natural touch, while the structure ensures agility and ease. Perfect for moving with purpose through any challenge."
   },
   {
     "id": 12,
@@ -147,7 +158,8 @@
     "image": "./shoes/sanji1.png",
     "releaseDate": "2025-02-18",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "These sneakers capture Sanji’s flair for style and precision, combining elegance with practicality. Designed with sleek lines and a touch of culinary artistry, they’re made for those who move with confidence and passion. A perfect blend of class and performance."
   },
   {
     "id": 13,
@@ -159,7 +171,8 @@
     "image": "./shoes/jin-woo1.png",
     "releaseDate": "2025-03-12",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "A shoe that embodies power and control, drawing from Jin-Woo's dark, commanding presence. With a design that feels both otherworldly and grounded, it’s built for those who walk through shadows with unstoppable force. Every step carries the weight of a king."
   },
   {
     "id": 14,
@@ -172,7 +185,8 @@
     "releaseDate": "2025-02-23",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 100
+    "salePrice": 100,
+    "description": "Sleek and effortlessly cool, these loafers reflect Reigen’s smooth talk and even smoother style. With a clean, polished look, they’re perfect for someone who’s always in control, no matter the situation. Comfort and charisma in every step."
   },
   {
     "id": 15,
@@ -184,7 +198,8 @@
     "image": "./shoes/tanjiro1.png",
     "releaseDate": "2025-02-22",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "These shoes are a tribute to Tanjiro’s fluidity and grace in battle. With a design that mirrors the calm yet powerful flow of water, they’re built for precise movement and unwavering strength. A perfect fit for those who walk with purpose and resilience."
   },
   {
     "id": 16,
@@ -196,7 +211,8 @@
     "image": "./shoes/law1.png",
     "releaseDate": "2025-01-30",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Sharp and calculated, these sneakers reflect Law’s precision and strategic mind. With a sleek, clinical design, they combine modern style with the meticulous nature of a surgeon. Perfect for those who approach life with a plan and execute it flawlessly."
   },
   {
     "id": 17,
@@ -208,7 +224,8 @@
     "image": "./shoes/giyu1.png",
     "releaseDate": "2025-02-12",
     "bestSeller": false,
-    "onSale": false
+    "onSale": false,
+    "description": "Designed for strength and fluidity, these boots embody Giyu's calm yet unstoppable presence. The water-inspired details symbolize his mastery of the Breathing technique, blending precision with quiet power. Built to move with purpose, like the flow of water itself."
   },
   {
     "id": 18,
@@ -220,7 +237,8 @@
     "image": "./shoes/ace1.png",
     "releaseDate": "2025-02-15",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "These kicks ignite with fiery intensity, reflecting Ace’s unstoppable will and passionate spirit. Bold and dynamic, they’re built for those who burn with purpose, always moving forward with the heat of their own fire. Designed for speed, strength, and a touch of rebellion."
   },
   {
     "id": 19,
@@ -232,7 +250,8 @@
     "image": "./shoes/usopp1.png",
     "releaseDate": "2025-03-07",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Light and precise, these sneakers reflect Ussop’s keen eye and sharp aim. With a design that combines agility and accuracy, they’re made for those who never miss their target. Perfect for anyone who moves with stealth and precision."
   },
   {
     "id": 20,
@@ -244,7 +263,8 @@
     "image": "./shoes/shinobu1.png",
     "releaseDate": "2025-02-14",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Delicate yet deadly, these flats embody Shinobu’s graceful but lethal presence. With subtle butterfly accents, they reflect her quiet strength and elegance, built for swift, silent movements. A perfect blend of beauty and power in every stride."
   },  
   {
     "id": 21,
@@ -257,7 +277,8 @@
     "releaseDate": "2025-02-15",
     "bestSeller": false,
     "onSale": false,
-    "salePrice": 140
+    "salePrice": 140,
+    "description": "Bold and futuristic, these sneakers reflect Franky’s mechanical genius and larger-than-life personality. With industrial design elements and a touch of retro flair, they’re built for durability and style, ready for any adventure. Strong, fast, and undeniably unique, just like the man himself."
   },
   {
     "id": 22,
@@ -269,7 +290,8 @@
     "image": "./shoes/ritsu1.png",
     "releaseDate": "2025-02-18",
     "bestSeller": false,
-    "onSale": false
+    "onSale": false,
+    "description": "These sneakers tap into Ritsu’s intense mental focus and raw psychic power. With a sleek, minimalist design, they exude quiet strength, built for swift, controlled movements. Perfect for anyone who commands power with precision and subtlety."
   },
   {
     "id": 23,
@@ -281,7 +303,8 @@
     "image": "./shoes/muzan1.png",
     "releaseDate": "2025-03-30",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Sophisticated yet menacing, these loafers mirror Muzan’s refined yet ruthless nature. With a dark, sleek design and a subtle touch of menace, they’re made for those who move with calculated grace and overwhelming power. Built for control, style, and dominance."
   },
   {
     "id": 24,
@@ -293,7 +316,8 @@
     "image": "./shoes/hancock1.png",
     "releaseDate": "2025-02-28",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Elegant and captivating, these flats reflect Hancock’s beauty and commanding presence. With a subtle heart motif and sleek design, they’re made for those who move with both grace and irresistible confidence. Perfect for leaving a lasting impression wherever you go."
   },
   {
     "id": 25,
@@ -306,7 +330,8 @@
     "releaseDate": "2025-02-18",
     "bestSeller": true,
     "onSale": true,
-    "salePrice": 160
+    "salePrice": 160,
+    "description": "Bold and fiery, these sneakers embody Rengoku’s blazing passion and unyielding spirit. With a dynamic flame design and sturdy build, they’re made for those who charge forward with intensity and unwavering resolve. Ready to ignite any path with unstoppable energy."
   },
   {
     "id": 26,
@@ -318,7 +343,8 @@
     "image": "./shoes/teru1.png",
     "releaseDate": "2025-02-14",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "These high-tops reflect Teru’s sharp sense of style and his powerful presence. With a sleek, modern design and a touch of sophistication, they’re built for those who stand out with confidence and authority. Perfect for making a statement with every step."
   },
   {
     "id": 27,
@@ -330,7 +356,8 @@
     "image": "./shoes/brook1.png",
     "releaseDate": "2025-03-15",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "These sneakers capture Brook’s laid-back vibe and musical soul. With a smooth, relaxed design, they’re made for easy movement and effortless style, just like the man who never misses a beat. Perfect for those who keep it cool, no matter the situation."
   },
   {
     "id": 28,
@@ -343,7 +370,8 @@
     "releaseDate": "2025-02-19",
     "bestSeller": true,
     "onSale": true,
-    "salePrice": 100
+    "salePrice": 100,
+    "description": "These sneakers radiate with the intensity of Sho’s fiery resolve. With a sleek design and bold, sharp accents, they’re built for those who burn with passion and power, ready to make an impact. Stylish and strong, perfect for leaving a mark wherever you go."
   },
   {
     "id": 29,
@@ -356,7 +384,8 @@
     "releaseDate": "2025-03-05",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 120
+    "salePrice": 120,
+    "description": "Graceful and regal, these flats reflect Vivi’s noble heart and elegance. With a soft, refined design and subtle royal accents, they’re perfect for those who move with grace and quiet strength. Ideal for anyone who carries themselves with dignity and poise."
   },
   {
     "id": 30,
@@ -368,7 +397,8 @@
     "image": "./shoes/robin1.png",
     "releaseDate": "2025-03-09",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Smart, elegant, and refined, these flats mirror Robin’s calm intellect and timeless style. Designed for comfort during long explorations, they carry a quiet sophistication. Perfect for those who seek knowledge while staying effortlessly composed."
   },
   {
     "id": 31,
@@ -381,7 +411,8 @@
     "releaseDate": "2025-01-15",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 90
+    "salePrice": 90,
+    "description": "Charged with raw power and instinct, these kicks capture the explosive energy of Yuuji’s Black Flash. Built for high-impact motion and relentless drive, they’re made for fighters who strike with heart and precision. A perfect blend of chaos and control."
   },
   {
     "id": 32,
@@ -394,7 +425,8 @@
     "releaseDate": "2025-01-25",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 90
+    "salePrice": 90,
+    "description": "Swift, fierce, and precise, these shoes reflect Mikasa’s unmatched agility and strength in combat. Inspired by the speed and sharp motion of ODM gear, they’re built for those who move with purpose and strike without hesitation. A tribute to discipline, loyalty, and raw skill."
   },
   {
     "id": 33,
@@ -406,7 +438,8 @@
     "image": "./shoes/gojo1.png",
     "releaseDate": "2025-02-01",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Effortlessly powerful and impossibly smooth, these shoes channel Gojo’s untouchable presence. With a design that feels light yet unstoppable, they’re made for those who walk with confidence through any barrier. Style and dominance wrapped into every motion."
   },
   {
     "id": 34,
@@ -418,7 +451,8 @@
     "image": "./shoes/android-18-1.png",
     "releaseDate": "2025-02-10",
     "bestSeller": false,
-    "onSale": false
+    "onSale": false,
+    "description": "Cool, tough, and unapologetically bold, these runners reflect Android 18’s fearless attitude and strength. Designed for speed and control, they carry a no-nonsense edge with effortless style. Perfect for those who play by their own rules."
   },
   {
     "id": 35,
@@ -431,7 +465,8 @@
     "releaseDate": "2025-03-22",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 85
+    "salePrice": 85,
+    "description": "Calm, sharp, and swift, these shoes capture Yuno’s connection to the wind and his unshakable focus. Built for silent speed and refined motion, they carry an air of elegance and quiet intensity. Ideal for those who rise with grace and strike with precision."
   },
   {
     "id": 36,
@@ -443,7 +478,8 @@
     "image": "./shoes/eren1.png",
     "releaseDate": "2025-03-01",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Raw power and unrelenting will define these shoes, echoing Eren’s transformation and drive. With a bold, forceful presence, they’re made for those who break limits and forge their own path. Built to carry the weight of rebellion and resolve."
   },
   {
     "id": 37,
@@ -455,7 +491,8 @@
     "image": "./shoes/levi1.png",
     "releaseDate": "2025-03-28",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Precise, lethal, and built for high performance, these shoes reflect Levi’s unmatched skill on the battlefield. Compact and refined, they’re made for swift, calculated movement and maximum efficiency. Perfect for those who take down giants with style and steel."
   },
   {
     "id": 38,
@@ -467,7 +504,8 @@
     "image": "./shoes/goku1.png",
     "releaseDate": "2025-03-20",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "These shoes channel the boundless energy and instinctive movement of Ultra Instinct. Lightweight yet powerful, they’re designed for those who push beyond limits with calm focus and explosive speed. A perfect fusion of control, freedom, and raw potential."
   },
   {
     "id": 39,
@@ -479,7 +517,8 @@
     "image": "./shoes/asta1.png",
     "releaseDate": "2025-02-28",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Brimming with anti-magic energy, these shoes reflect Asta’s relentless drive and fierce determination. Rugged and bold, they’re made for charging forward no matter the odds. Built for those who rise without fear, even in the face of darkness."
   },
   {
     "id": 40,
@@ -492,7 +531,8 @@
     "releaseDate": "2025-03-07",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 100
+    "salePrice": 100,
+    "description": "Silent, swift, and calculated, these shoes mirror Megumi’s ability to move unseen and strike with precision. Designed for quick, stealthy movements, they’re perfect for those who thrive in the shadows, waiting for the right moment to act."
   },
   {
     "id": 41,
@@ -504,7 +544,8 @@
     "image": "./shoes/ichigo1.png",
     "releaseDate": "2025-01-17",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "These sneakers embody Ichigo’s unwavering resolve and the power of his soul. With a strong, bold design, they’re built for those who fight with heart and stand firm against any challenge. A perfect fit for those who wield both strength and compassion."
   },
   {
     "id": 42,
@@ -516,7 +557,8 @@
     "image": "./shoes/nobara1.png",
     "releaseDate": "2025-01-28",
     "bestSeller": false,
-    "onSale": false
+    "onSale": false,
+    "description": "Bold, fierce, and unapologetically stylish, these shoes reflect Nobara’s powerful personality and cunning. Designed with sharp, dynamic details, they’re made for those who take control and leave a lasting impression. Perfect for anyone who combines strength with a sense of flair."
   },
   {
     "id": 43,
@@ -529,7 +571,8 @@
     "releaseDate": "2025-02-05",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 70
+    "salePrice": 70,
+    "description": "Built with the pride and power of a Saiyan prince, these kicks exude strength and determination. With a sleek, royal design, they’re made for those who move with purpose and unshakable confidence. A perfect match for anyone who’s ready to dominate every challenge."
   },
   {
     "id": 44,
@@ -541,7 +584,8 @@
     "image": "./shoes/noelle1.png",
     "releaseDate": "2025-02-15",
     "bestSeller": false,
-    "onSale": false
+    "onSale": false,
+    "description": "Graceful yet powerful, these shoes embody Noelle’s mastery over water magic and her determination to grow. With a fluid, sleek design, they’re made for those who move with elegance and strength, even in the face of adversity. Perfect for making waves with every stride."
   },
   {
     "id": 45,
@@ -554,7 +598,8 @@
     "releaseDate": "2025-02-22",
     "bestSeller": true,
     "onSale": true,
-    "salePrice": 120
+    "salePrice": 120,
+    "description": "Bold and commanding, these shoes capture Shanks' fearless leadership and fiery spirit. With a striking crimson design, they’re built for those who walk with purpose, ready to face any storm. Ideal for anyone who leads with strength and leaves a lasting impression."
   },
   {
     "id": 46,
@@ -566,7 +611,8 @@
     "image": "./shoes/kuroko1.png",
     "releaseDate": "2025-03-20",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Silent, sleek, and full of deceptive speed, these sneakers reflect Kuroko’s ability to disappear and strike without warning. Designed for seamless, fluid motion, they’re perfect for those who move unnoticed yet make an impact when it counts. Ideal for masters of subtlety and precision."
   },
   {
     "id": 47,
@@ -579,7 +625,8 @@
     "releaseDate": "2025-03-12",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 99
+    "salePrice": 99,
+    "description": "Elegant yet sharp, these shoes embody Momoi's keen sense of strategy and style. With a design that blends bold accents and smooth curves, they’re made for those who read the game and make their move with precision. Perfect for those who always have their eye on the prize."
   },
   {
     "id": 48,
@@ -592,7 +639,8 @@
     "releaseDate": "2025-01-20",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 98
+    "salePrice": 98,
+    "description": "Fierce and precise, these shoes reflect Kurapika’s determination and the power of his chains. With a sleek, tight design, they’re made for those who move with purpose and focus, prepared for any challenge that lies ahead. Ideal for those who wield strength with strategy."
   },
   {
     "id": 49,
@@ -604,7 +652,8 @@
     "image": "./shoes/gon1.png",
     "releaseDate": "2025-03-11",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Energetic and full of life, these shoes capture Gon’s adventurous spirit and unyielding determination. With a design that’s built for movement and resilience, they’re perfect for those who push forward, no matter the obstacles. Ideal for those always chasing their next big adventure."
   },
   {
     "id": 50,
@@ -616,7 +665,8 @@
     "image": "./shoes/naruto1.png",
     "releaseDate": "2025-02-01",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Dynamic and explosive, these shoes embody the power and energy of Naruto’s Rasengan. With bold, swirling patterns and a strong design, they’re made for those who move with fierce determination and a will to break through any barrier. Perfect for anyone ready to unleash their inner strength."
   },  
   {
     "id": 51,
@@ -628,7 +678,8 @@
     "image": "./shoes/hinata1.png",
     "releaseDate": "2025-03-25",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Graceful and calm, these shoes reflect Hinata’s quiet strength and unwavering determination. With a soft, flowing design, they’re made for those who move with kindness but stand firm when it matters most. Perfect for those who approach every challenge with a gentle heart and powerful resolve."
   },
   {
     "id": 52,
@@ -640,7 +691,8 @@
     "image": "./shoes/kageyama1.png",
     "releaseDate": "2025-01-25",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Precision and power define these shoes, mirroring Kageyama's dominance on the court. With a sharp, commanding design, they’re made for those who control the game with authority and focus. Perfect for anyone who strives to lead and elevate every play to perfection."
   },
   {
     "id": 53,
@@ -652,7 +704,8 @@
     "image": "./shoes/sasuke1.png",
     "releaseDate": "2025-02-03",
     "bestSeller": false,
-    "onSale": false
+    "onSale": false,
+    "description": "Sharp and electrifying, these shoes capture the speed and power of Sasuke’s Chidori. With a sleek, intense design, they’re built for those who move with precision and strike with deadly force. Perfect for anyone who channels their energy into unstoppable momentum."
   },
   {
     "id": 54,
@@ -664,7 +717,8 @@
     "image": "./shoes/killua1.png",
     "releaseDate": "2025-04-01",
     "bestSeller": false,
-    "onSale": false
+    "onSale": false,
+    "description": "Fast, agile, and deadly, these kicks reflect Killua’s lightning-quick reflexes and unmatched speed. Designed for rapid movement and precision, they’re perfect for those who move like a bolt of lightning — quick, unstoppable, and always ahead of the game."
   },
   {
     "id": 55,
@@ -676,7 +730,8 @@
     "image": "./shoes/natsu1.png",
     "releaseDate": "2025-04-02",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Fiery and fierce, these shoes capture Natsu’s raw power and unrelenting spirit. With a bold, flame-inspired design, they’re built for those who charge forward with burning passion and unstoppable force. Perfect for anyone ready to blaze their own trail."
   },
   {
     "id": 56,
@@ -688,7 +743,8 @@
     "image": "./shoes/lucy1.png",
     "releaseDate": "2025-04-10",
     "bestSeller": false,
-    "onSale": false
+    "onSale": false,
+    "description": "Elegant and cosmic, these shoes mirror Lucy’s bond with the Celestial Spirits. With intricate starry details and a refined design, they embody grace and a sense of limitless possibility. Made for those who step with both purpose and wonder."
   },
   {
     "id": 57,
@@ -700,7 +756,8 @@
     "image": "./shoes/kagami1.png",
     "releaseDate": "2025-03-17",
     "bestSeller": false,
-    "onSale": false
+    "onSale": false,
+    "description": "Powerful and explosive, these shoes capture Kagami’s high-flying athleticism and determination. With a bold, dynamic design, they’re crafted for those who leap with unstoppable force and precision. Ideal for anyone who dominates with strength and speed."
   },
   {
     "id": 58,
@@ -713,7 +770,8 @@
     "releaseDate": "2025-02-25",
     "bestSeller": true,
     "onSale": false,
-    "salePrice": 96
+    "salePrice": 96,
+    "description": "Sharp and confident, these shoes reflect Leorio’s blend of professionalism and boldness. With a sleek, refined design, they’re built for those who walk with authority and purpose, making an impression wherever they go."
   },
   {
     "id": 59,
@@ -726,18 +784,20 @@
     "releaseDate": "2025-04-02",
     "bestSeller": false,
     "onSale": true,
-    "salePrice": 116
+    "salePrice": 116,
+    "description": "Light and agile, these shoes reflect Hinata’s soaring spirit and relentless energy. With a design that emphasizes speed and height, they’re made for those who rise above every challenge with determination and a smile. Crafted for those who always aim for the sky."
   },
   {
     "id": 60,
     "anime": "Jujutsu Kaisen",
-    "name": "Getou Curse Parade",
+    "name": "Geto Curse Parade",
     "gender": "Men",
     "kids": false,
     "price": 130,
     "image": "./shoes/getou1.png",
     "releaseDate": "2025-02-25",
     "bestSeller": true,
-    "onSale": false
+    "onSale": false,
+    "description": "Dark and commanding, these shoes reflect Geto’s mastery over curses and his ominous presence. With a sleek, sinister design, they’re built for those who walk with power and control, ready to lead a procession of their own. Perfect for anyone who moves with authority and dark intent."
   }  
 ]  

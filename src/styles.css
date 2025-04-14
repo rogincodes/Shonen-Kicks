@@ -586,8 +586,8 @@ input:focus {
 }
 .shoe-description {
   text-align: left;
-  line-height: 1.6;
-  font-weight: 500;
+  line-height: 1.8;
+  margin: 0 0 50px 0;
 }
 .shoe-reccommendations {
   width: 100%;
@@ -609,12 +609,20 @@ input:focus {
 .carousel-item {
   flex: 0 0 auto; /* Prevents the shoe cards from shrinking */
   width: 200px;
-  text-align: center;
   scroll-snap-align: center;
+  color: #4e4e4e;
 }
 .carousel-item img {
   width: 100%;
   height: auto;
+}
+.item-name {
+  margin: 3px 0 0 0;
+  font-weight: 600;
+  color: #686868;
+}
+.item-type {
+  margin: 0 0 8px 0;
 }
 .carousel::-webkit-scrollbar {
   height: 4px;

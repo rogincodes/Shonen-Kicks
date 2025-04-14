@@ -48,13 +48,13 @@ export default function Carousel() {
         >
           <img src={shoe.image} alt={shoe.name} className="carousel-image" />
           <div className="shoe-content">
-            <p className="shoe-name">{shoe.name}</p>
-            <p>
+            <p className="item-name">{shoe.name}</p>
+            <p className="item-type">
               {shoe.kids
-                ? "(KIDS')"
+                ? "KIDS' SHOES"
                 : shoe.gender === "Men"
-                ? "(MEN'S)"
-                : "(WOMEN'S)"}
+                ? "MEN'S SHOES"
+                : "WOMEN'S SHOES"}
             </p>
             <div className="price-container">
               <p className={`shoe-price ${shoe.onSale ? "markdown" : ""}`}>

@@ -49,7 +49,7 @@ export default function Carousel() {
           className="carousel-item"
           onClick={() => setSelectedShoe(shoe)}
         >
-          <img src={shoe.image} alt={shoe.name} className="carousel-image" />
+          <img src={shoe.image} alt={shoe.name} />
           <div className="shoe-content">
             <p className="item-name">{shoe.name}</p>
             <p className="item-type">

@@ -210,7 +210,7 @@ export default function Header({ shoes, category }) {
         </div>
       </div>
 
-      {/* SEARCH ALL */}
+      {/* SEARCH */}
       <div className={`search-container ${searchIsOpen ? "active" : ""}`}>
         <div className="search-head">
           <div className="search-all">
@@ -230,7 +230,7 @@ export default function Header({ shoes, category }) {
 
         {/* SEARCH RESULTS - ONLY SHOWS UP IF THERE IS VALUE */}
         {searchTerm && (
-          <div>
+          <div className="search-results">
             <p className="top-results">Top Results</p>
             <div className="shoes-grid">
               {firstSixResults.map((shoe) => (

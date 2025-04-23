@@ -288,7 +288,7 @@ input:focus {
 
 .results-count {
   font-weight: 400;
-  margin: 20px 0 8px 0;
+  margin: 20px 0 5px 0;
   text-align: left;
   padding: 0 15px;
 }
@@ -523,12 +523,16 @@ input:focus {
   font-size: 16px;
   width: fit-content;
   border: none;
+  color: #333333;
 }
 .top-results {
   font-weight: 600;
   color: #6e6e6e;
   text-align: left;
   padding-left: 24px;
+}
+.search-results img {
+  border-radius: 3px;
 }
 
 .shoe-details-container {
@@ -633,6 +637,7 @@ input:focus {
 .carousel-item img {
   width: 100%;
   height: auto;
+  border-radius: 3px;
 }
 .item-name {
   margin: 3px 0 0 0;

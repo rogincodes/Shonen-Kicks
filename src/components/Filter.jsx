@@ -21,17 +21,20 @@ export default function Filter({ shoes, shoeResults }) {
     count > 0 ? setHasFilter(true) : setHasFilter(false);
   };
 
+  // This function counts the number of selected filters and updates the filter count state
   const countFilters = () => {
     let count = gender.length + kids.length + anime.length + priceRange.length;
     setFilterCount(count);
     toggleFilterFooter(count);
   };
 
+  // This function sets the selected filters to be displayed
   const showFilters = () => {
     let selectedFilters = [...gender, ...kids, ...anime, ...priceRange];
     setFiltersSelected(selectedFilters);
   };
 
+  // This function removes a filter from the selected filters and updates the state accordingly
   const removeFilter = (filter) => {
     let selectedFilters = filtersSelected.filter((prevFilter) => {
       return prevFilter != filter;
@@ -147,6 +150,7 @@ export default function Filter({ shoes, shoeResults }) {
     );
   };
 
+  // Clear all filters and reset the state
   const clearFilter = () => {
     setGender([]);
     setKids([]);
@@ -154,6 +158,7 @@ export default function Filter({ shoes, shoeResults }) {
     setPriceRange([]);
   };
 
+  // This variable holds the filtered shoes based on the selected filters
   const filteredShoes = shoes.filter((shoe) => {
     return (
       matchesGender(shoe, gender) &&
@@ -164,6 +169,8 @@ export default function Filter({ shoes, shoeResults }) {
     );
   });
 
+  // This variable holds the sorted shoes based on the selected sort option
+  // It uses useMemo to optimize performance by memoizing the result
   const sortedShoes = useMemo(() => {
     let sorted = [...filteredShoes];
     switch (sort) {
@@ -233,6 +240,7 @@ export default function Filter({ shoes, shoeResults }) {
           <div className="filter-content">
             <h2>FILTER BY</h2>
 
+            {/* GENDER FILTER GROUP */}
             <div className={`filter-group ${kids.length > 0 ? "hide" : ""}`}>
               <h3>Gender</h3>
               <div className="filter-options">
@@ -259,6 +267,7 @@ export default function Filter({ shoes, shoeResults }) {
               </div>
             </div>
 
+            {/* KIDS FILTER GROUP */}
             <div className={`filter-group ${gender.length > 0 ? "hide" : ""}`}>
               <h3>Kids</h3>
               <div className="filter-options">
@@ -285,6 +294,7 @@ export default function Filter({ shoes, shoeResults }) {
               </div>
             </div>
 
+            {/* ANIME FILTER GROUP */}
             <div className="filter-group">
               <h3>Anime</h3>
               <div className="filter-options">
@@ -431,6 +441,7 @@ export default function Filter({ shoes, shoeResults }) {
               </div>
             </div>
 
+            {/* PRICE RANGE FILTER GROUP */}
             <div className="filter-group">
               <h3>Price Range</h3>
               <div className="filter-options">
@@ -497,7 +508,7 @@ export default function Filter({ shoes, shoeResults }) {
           </div>
         </div>
 
-        {/* SORT */}
+        {/* SORT BAR */}
         <div className="sort-bar">
           <select
             name="sort"
@@ -515,14 +526,13 @@ export default function Filter({ shoes, shoeResults }) {
         </div>
       </div>
 
-      {/* FILTERS SELECTED */}
+      {/* FILTERS SELECTED -> ONLY SHOWS UP WHENEVER THERE IS A FILTER */}
       <div className={`remove-selected ${hasFilter ? "show" : ""}`}>
         {filtersSelected.length > 1 && (
           <button onClick={clearFilter} className="clear-all-button">
             Clear All
           </button>
         )}
-
         {filtersSelected.map((filter, index) => (
           <div key={index}>
             <button

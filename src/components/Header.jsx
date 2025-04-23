@@ -37,6 +37,7 @@ export default function Header({ shoes, category }) {
     setSearchTerm(event.target.value);
   };
 
+  // This function checks if the shoe name or anime name matches the search term
   const matchesSearchTerm = (shoe, searchTerm) => {
     return (
       shoe.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -44,19 +45,25 @@ export default function Header({ shoes, category }) {
     );
   };
 
+  // This variable holds the filtered shoes based on the search term
   const filteredShoes = shoes.filter((shoe) => {
     return matchesSearchTerm(shoe, searchTerm);
   });
 
+  // Used to limit the number of results shown in the search results
   const firstSixResults = filteredShoes.slice(0, 8);
 
   return (
     <div>
       <div className="header">
+        {/* LOGO */}
         <div className="logo">
-          <img src="logo/header-logo.png" alt="Shonen Kicks" />
+          <a href="/">
+            <img src="logo/header-logo.png" alt="Shonen Kicks" />
+          </a>
         </div>
 
+        {/* TOP BUTTONS */}
         <div className="top-buttons">
           <button className="icons" onClick={toggleSearch}>
             <img src="icons/search-all.png" alt="Search" />
@@ -192,6 +199,7 @@ export default function Header({ shoes, category }) {
           </div>
         </div>
 
+        {/* MENU FOOTER */}
         <div className="menu-footer">
           <img src="logo/shonenkicks.png" alt="Shonen Kicks" />
           <p>Log in to pick up where you left off!</p>
@@ -202,6 +210,7 @@ export default function Header({ shoes, category }) {
         </div>
       </div>
 
+      {/* SEARCH ALL */}
       <div className={`search-container ${searchIsOpen ? "active" : ""}`}>
         <div className="search-head">
           <div className="search-all">
@@ -219,6 +228,7 @@ export default function Header({ shoes, category }) {
           </button>
         </div>
 
+        {/* SEARCH RESULTS - ONLY SHOWS UP IF THERE IS VALUE */}
         {searchTerm && (
           <div>
             <p className="top-results">Top Results</p>

@@ -256,6 +256,7 @@ input:focus {
   display: none;
   flex-wrap: wrap;
   gap: 6px;
+  padding: 0 15px;
 }
 .show {
   display: flex;

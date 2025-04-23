@@ -9,6 +9,7 @@ export default function Carousel() {
   const { selectedShoe, setSelectedShoe } = useContext(SelectedShoeContext);
   const carouselRef = useRef(null);
 
+  // Function to get 10 random numbers excluding the selected shoe
   const getRandomNumbers = () => {
     const max = Math.min(10, shoes.length);
     const excluded = selectedShoe.id - 1;
@@ -23,12 +24,14 @@ export default function Carousel() {
     return Array.from(randomNumbers);
   };
 
+  // Function to get random shoes based on the random numbers generated
   const getRandomShoes = () => {
     const randomNumbers = getRandomNumbers();
     const randomShoes = randomNumbers.map((number) => shoes[number]);
     setRandomShoes(randomShoes);
   };
 
+  // Effect to get random shoes when the component mounts or when the selected shoe changes
   useEffect(() => {
     if (shoes && shoes.length >= 10) {
       getRandomShoes();

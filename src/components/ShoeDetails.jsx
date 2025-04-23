@@ -7,6 +7,7 @@ import { ShoesProvider } from "../context/ShoesProvider";
 export default function ShoeDetails() {
   const { selectedShoe, setSelectedShoe } = useContext(SelectedShoeContext);
 
+  // Size options for different categories
   const sizeOptions = {
     kids: [
       "1Y / EU 32",
@@ -57,6 +58,7 @@ export default function ShoeDetails() {
     ],
   };
 
+  // Function to get size options based on selected shoe category
   const getSizeOptions = () => {
     if (selectedShoe.kids) return sizeOptions.kids;
     if (selectedShoe.gender === "Men") return sizeOptions.men;
@@ -65,9 +67,11 @@ export default function ShoeDetails() {
 
   return (
     <div className="shoe-details-container">
+      {/* Floating back button to get back to homepage */}
       <button className="floating-back" onClick={() => setSelectedShoe(null)}>
         <img src="./icons/back-button.png" alt="Back" />
       </button>
+      {/* Selected shoe details section */}
       <img src={selectedShoe.image} alt={selectedShoe.name} />
       <div className="shoe-details">
         <p className="shoe-details-anime">{selectedShoe.anime.toUpperCase()}</p>
@@ -111,6 +115,7 @@ export default function ShoeDetails() {
         <button className="add-to-cart-button">ADD TO CART</button>
         <p className="shoe-description">{selectedShoe.description}</p>
 
+        {/* 'You Might Also Like' section featuring a carousel design */}
         <div className="shoe-reccommendations">
           <h3 className="recommendation-title">YOU MIGHT ALSO LIKE</h3>
           <div className="shoe-recommendations-list">

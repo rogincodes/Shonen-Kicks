@@ -9,6 +9,7 @@ function App() {
   const [shoes, setShoes] = useState([]);
   const [category, setCategory] = useState("NEW RELEASES");
 
+  // Fetch shoes data from JSON file and set is in state
   async function fetchShoes() {
     const response = await fetch("shoes.json");
     const data = await response.json();
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* The provider allows the selected shoe to be accessed by any component within the provider */}
       <SelectedShoeProvider>
         <Header
           shoes={shoes}

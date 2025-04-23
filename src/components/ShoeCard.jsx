@@ -25,9 +25,11 @@ export default function ShoeCard({ shoe }) {
           </span>
         </p>
         <div className="price-container">
+          {/* Adds a line-through decoration to the original price if the shoe is on sale */}
           <p className={`shoe-price ${shoe.onSale ? "markdown" : ""}`}>
             ${shoe.price}
           </p>
+          {/* Sale price is displayed if on sale, and hidden if not on sale */}
           <p className={`shoe-price sale-price ${shoe.onSale ? "" : "hide"}`}>
             ${shoe.salePrice}
           </p>

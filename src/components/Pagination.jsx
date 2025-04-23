@@ -5,13 +5,15 @@ export default function Pagination({ shoes, currentShoes }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [showPrev, setShowPrev] = useState(false);
   const [showNext, setShowNext] = useState(false);
-  const shoesPerPage = 10;
 
+  const shoesPerPage = 10; // Number of shoes to display per page
+  // Calculate the total number of pages based on the number of shoes and shoes per page
   const totalPages = Math.ceil(shoes.length / shoesPerPage);
   const indexOfLastShoe = currentPage * shoesPerPage;
   const indexOfFirstShoe = indexOfLastShoe - shoesPerPage;
   const currentItems = shoes.slice(indexOfFirstShoe, indexOfLastShoe);
 
+  // Function to show or hide the previous button based on the current page and the total pages
   const showFirstPage = () => {
     if (totalPages >= 3 && currentPage >= 3) {
       setShowPrev(true);
@@ -20,6 +22,7 @@ export default function Pagination({ shoes, currentShoes }) {
     }
   };
 
+  // Function to show or hide the next button based on the current page and the total pages
   const showLastPage = () => {
     if (totalPages > 2 && currentPage < totalPages) {
       setShowNext(true);
@@ -28,6 +31,7 @@ export default function Pagination({ shoes, currentShoes }) {
     }
   };
 
+  // Function to change the current page based on the user's choice
   const changePage = (choice) => {
     if (choice === "prev") {
       setCurrentPage(currentPage - 1);
@@ -42,10 +46,13 @@ export default function Pagination({ shoes, currentShoes }) {
     }
   };
 
+  // Effect to update the current page to 1 when the total pages change
+  // This ensures that the pagination resets to the first page when the number of shoes changes
   useEffect(() => {
     setCurrentPage(1);
   }, [totalPages]);
 
+  // Effect to update the current shoes displayed and pagination buttons based on the current page
   useEffect(() => {
     currentShoes(currentItems);
     showFirstPage();
@@ -54,6 +61,7 @@ export default function Pagination({ shoes, currentShoes }) {
 
   return (
     <div className="pagination-wrap">
+      {/* Display the previous button and the first page number if applicable */}
       {showPrev && (
         <div className="pagination-arrows">
           <button onClick={() => changePage("prev")}>
@@ -63,6 +71,7 @@ export default function Pagination({ shoes, currentShoes }) {
           <span>...</span>
         </div>
       )}
+      {/* Display next button if applicable */}
       {currentPage === 2 && totalPages != 2 && (
         <div className="pagination-arrows">
           <button onClick={() => changePage("prev")}>
@@ -86,6 +95,7 @@ export default function Pagination({ shoes, currentShoes }) {
           2
         </button>
       )}
+      {/* Display the next button and the last page number if applicable */}
       {showNext && (
         <div className="pagination-arrows">
           <span>...</span>

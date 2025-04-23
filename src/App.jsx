@@ -23,6 +23,7 @@ function App() {
     <div className="App">
       <SelectedShoeProvider>
         <Header
+          shoes={shoes}
           category={(selectedCategory) =>
             setCategory(selectedCategory.toUpperCase())
           }

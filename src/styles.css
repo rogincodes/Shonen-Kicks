@@ -285,7 +285,7 @@ input:focus {
   text-transform: uppercase;
 }
 
-.product-number {
+.results-count {
   font-weight: 400;
   margin: 20px 0 8px 0;
   text-align: left;
@@ -489,28 +489,45 @@ input:focus {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  padding: 15px 20px 0 20px;
+  padding-bottom: 50px;
 }
 .search-container.active {
   right: 0;
 }
 .search-head {
   display: flex;
+  justify-content: space-between;
+  padding: 15px 24px;
 }
 .search-all {
   display: flex;
   align-items: center;
   border: #CCCCCC 1px solid;
   border-radius: 20px;
+  background-color: #f6f6f6;
+  width: 100%;
+  margin-right: 12px;
 }
 .search-all img {
-  height: 40px;
-  border: #333333 1px solid;
-  
-  border-radius: 50%;
+  height: 35px;
+  margin: 0 3px 0 0;
+  padding: 6.5px;
 }
 .search-all input {
-  border-radius: 20px;
+  max-width: 78%;
+  font-size: 16px;
+  background-color: #f6f6f6;
+}
+.cancel-search-btn {
+  font-size: 16px;
+  width: fit-content;
+  border: none;
+}
+.top-results {
+  font-weight: 600;
+  color: #6e6e6e;
+  text-align: left;
+  padding-left: 24px;
 }
 
 .shoe-details-container {

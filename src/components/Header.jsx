@@ -1,13 +1,15 @@
 import "../styles.css";
 import { useState, useContext } from "react";
 import SelectedShoeContext from "../context/SelectedShoeContext";
+import ShoeCard from "./ShoeCard";
 
-export default function Header({ category }) {
+export default function Header({ shoes, category }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [subMenuIsOpen, setSubMenuIsOpen] = useState();
   const [subMenu, setSubMenu] = useState("");
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const { setSelectedShoe } = useContext(SelectedShoeContext);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const toggleMenu = () => {
     setMenuIsOpen(!menuIsOpen);
@@ -31,6 +33,23 @@ export default function Header({ category }) {
     setSubMenuIsOpen(!subMenuIsOpen);
   };
 
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const matchesSearchTerm = (shoe, searchTerm) => {
+    return (
+      shoe.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      shoe.anime.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };
+
+  const filteredShoes = shoes.filter((shoe) => {
+    return matchesSearchTerm(shoe, searchTerm);
+  });
+
+  const firstSixResults = filteredShoes.slice(0, 8);
+
   return (
     <div>
       <div className="header">
@@ -39,7 +58,7 @@ export default function Header({ category }) {
         </div>
 
         <div className="top-buttons">
-          <button className="icons">
+          <button className="icons" onClick={toggleSearch}>
             <img src="icons/search-all.png" alt="Search" />
           </button>
 
@@ -187,10 +206,31 @@ export default function Header({ category }) {
         <div className="search-head">
           <div className="search-all">
             <img src="icons/search-all.png" alt="Search" />
-            <input type="text" placeholder="Search" />{" "}
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
           </div>
-          <button onClick={toggleSearch}>Cancel</button>
+          <button className="cancel-search-btn" onClick={toggleSearch}>
+            Cancel
+          </button>
         </div>
+
+        {searchTerm && (
+          <div>
+            <p className="top-results">Top Results</p>
+            <div className="shoes-grid">
+              {firstSixResults.map((shoe) => (
+                <div onClick={toggleSearch} key={shoe.id}>
+                  <ShoeCard key={shoe.id} shoe={shoe}></ShoeCard>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

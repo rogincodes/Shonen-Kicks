@@ -513,7 +513,7 @@ input:focus {
   }
   to {
     opacity: 0;
-    transform: scale(0.80);
+    transform: scale(0.95);
     display: none;
   }
 }
@@ -663,8 +663,8 @@ input:focus {
 }
 .item-name {
   margin: 3px 0 0 0;
-  font-weight: 600;
-  color: #686868;
+  font-weight: 700;
+  color: #5a5a5a;
 }
 .item-type {
   margin: 0 0 8px 0;

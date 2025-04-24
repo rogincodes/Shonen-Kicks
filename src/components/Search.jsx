@@ -2,7 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import "../styles.css";
 import ShoeCard from "./ShoeCard";
 
-export default function Search({ shoes, searchIsOpen, toggleSearch }) {
+export default function Search({
+  shoes,
+  searchIsOpen,
+  toggleSearch,
+  shouldRender,
+}) {
   const [searchTerm, setSearchTerm] = useState("");
   const searchInputRef = useRef(null);
 
@@ -34,38 +39,46 @@ export default function Search({ shoes, searchIsOpen, toggleSearch }) {
   }, [searchIsOpen]);
 
   return (
-    <div className={`search-container ${searchIsOpen ? "active" : ""}`}>
-      <div className="search-head">
-        <div className="search-all">
-          <img src="icons/search-all.png" alt="Search" />
-          <input
-            id="search-input"
-            type="text"
-            placeholder="Search"
-            value={searchTerm}
-            onChange={handleSearch}
-            ref={searchInputRef}
-          />
-        </div>
-        <button
-          className="cancel-search-btn"
-          onClick={() => toggleSearch(false)}
+    <div>
+      {shouldRender && (
+        <div
+          className={`search-container ${
+            searchIsOpen ? "fade-scale-in" : "fade-scale-out"
+          }`}
         >
-          Cancel
-        </button>
-      </div>
-
-      {/* SEARCH RESULTS - ONLY SHOWS UP IF THERE IS VALUE */}
-      {searchTerm && (
-        <div className="search-results">
-          <p className="top-results">Top Results</p>
-          <div className="shoes-grid">
-            {firstSixResults.map((shoe) => (
-              <div onClick={() => toggleSearch(false)} key={shoe.id}>
-                <ShoeCard key={shoe.id} shoe={shoe}></ShoeCard>
-              </div>
-            ))}
+          <div className="search-head">
+            <div className="search-all">
+              <img src="icons/search-all.png" alt="Search" />
+              <input
+                id="search-input"
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={handleSearch}
+                ref={searchInputRef}
+              />
+            </div>
+            <button
+              className="cancel-search-btn"
+              onClick={() => toggleSearch(false)}
+            >
+              Cancel
+            </button>
           </div>
+
+          {/* SEARCH RESULTS - ONLY SHOWS UP IF THERE IS VALUE */}
+          {searchTerm && (
+            <div className="search-results">
+              <p className="top-results">Top Results</p>
+              <div className="shoes-grid">
+                {firstSixResults.map((shoe) => (
+                  <div onClick={() => toggleSearch(false)} key={shoe.id}>
+                    <ShoeCard key={shoe.id} shoe={shoe}></ShoeCard>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

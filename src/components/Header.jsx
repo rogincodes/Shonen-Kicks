@@ -9,13 +9,21 @@ export default function Header({ shoes, category }) {
   const [subMenu, setSubMenu] = useState("");
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const { setSelectedShoe } = useContext(SelectedShoeContext);
+  const [shouldRender, setShouldRender] = useState(false);
 
   const toggleMenu = () => {
     setMenuIsOpen(!menuIsOpen);
   };
 
   const toggleSearch = () => {
-    setSearchIsOpen(!searchIsOpen);
+    setSearchIsOpen(true);
+    if (searchIsOpen) {
+      setSearchIsOpen(false); // triggers fade-out
+      setTimeout(() => setShouldRender(false), 400); // unmount after fade-out
+    } else {
+      setShouldRender(true); // mount first
+      setSearchIsOpen(true); // then trigger fade-in
+    }
   };
 
   const toggleSubMenu = (selectedSubMenu) => {
@@ -194,6 +202,7 @@ export default function Header({ shoes, category }) {
         shoes={shoes}
         searchIsOpen={searchIsOpen}
         toggleSearch={(toggle) => setSearchIsOpen(toggle)}
+        shouldRender={shouldRender}
       ></Search>
     </div>
   );

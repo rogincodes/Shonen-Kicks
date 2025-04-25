@@ -2,6 +2,8 @@ import "../styles.css";
 import { useState, useContext } from "react";
 import SelectedShoeContext from "../context/SelectedShoeContext";
 import Search from "./Search";
+import Cart from "./Cart";
+import { render } from "@testing-library/react";
 
 export default function Header({ shoes, category }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -9,7 +11,9 @@ export default function Header({ shoes, category }) {
   const [subMenu, setSubMenu] = useState("");
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const { setSelectedShoe } = useContext(SelectedShoeContext);
-  const [shouldRender, setShouldRender] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false); // to be changed to renderSearch
+  const [cartIsOpen, setCartIsOpen] = useState(false);
+  const [renderCart, setRenderCart] = useState(false);
 
   const toggleMenu = () => {
     setMenuIsOpen(!menuIsOpen);
@@ -23,6 +27,17 @@ export default function Header({ shoes, category }) {
     } else {
       setShouldRender(true); // mount first
       setSearchIsOpen(true); // then trigger fade-in
+    }
+  };
+
+  const toggleCart = () => {
+    setCartIsOpen(!cartIsOpen);
+    if (cartIsOpen) {
+      setCartIsOpen(false); // triggers slide-out
+      setTimeout(() => setRenderCart(false), 400); // unmount after slide-out
+    } else {
+      setRenderCart(true); // mount first
+      setCartIsOpen(true); // then trigger slide-in
     }
   };
 
@@ -45,7 +60,7 @@ export default function Header({ shoes, category }) {
       <div className="header">
         {/* LOGO */}
         <div className="logo">
-          <a href="/">
+          <a href="https://rogincodes.github.io/Shonen-Kicks/">
             <img src="logo/header-logo.png" alt="Shonen Kicks" />
           </a>
         </div>
@@ -60,9 +75,11 @@ export default function Header({ shoes, category }) {
             <img src="icons/user.png" alt="User" />
           </button>
 
-          <button className="icons">
+          <button className="icons" onClick={toggleCart}>
             <img src="icons/shopping-basket.png" alt="Search" />
           </button>
+
+          {cartIsOpen && <div className="backdrop" onClick={toggleCart}></div>}
 
           <button className="icons" onClick={toggleMenu}>
             <img src="icons/menu.png" alt="Menu" />
@@ -204,6 +221,13 @@ export default function Header({ shoes, category }) {
         toggleSearch={(toggle) => setSearchIsOpen(toggle)}
         shouldRender={shouldRender}
       ></Search>
+
+      {/* CHECKOUT */}
+      <Cart
+        cartIsOpen={cartIsOpen}
+        toggleCart={(toggle) => setCartIsOpen(toggle)}
+        renderCart={renderCart}
+      ></Cart>
     </div>
   );
 }

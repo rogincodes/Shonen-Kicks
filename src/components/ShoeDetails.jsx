@@ -1,11 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import "../styles.css";
 import SelectedShoeContext from "../context/SelectedShoeContext";
 import Carousel from "./Carousel";
 import { ShoesProvider } from "../context/ShoesProvider";
+import CartItemsContext from "../context/CartItemsContext";
 
 export default function ShoeDetails() {
   const { selectedShoe, setSelectedShoe } = useContext(SelectedShoeContext);
+  const { order, setOrder } = useContext(CartItemsContext);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [activeSize, setActiveSize] = useState(null);
 
   // Size options for different categories
   const sizeOptions = {
@@ -65,6 +69,37 @@ export default function ShoeDetails() {
     return sizeOptions.women;
   };
 
+  const addToCart = (shoe) => {
+    const existingItem = order.find((item) => item.id === shoe.id);
+    const existingSize = order.find((item) => item.size === shoe.size);
+    if (existingItem && existingSize) {
+      setOrder((prevOrder) =>
+        prevOrder.map(
+          (item) =>
+            item.id === shoe.id && item.size === shoe.size
+              ? { ...item, quantity: item.quantity + 1 }
+              : { ...item, quantity: item.quantity } // Keep the same quantity for other items
+        )
+      );
+    } else {
+      setOrder((prevOrder) => [...prevOrder, { ...shoe, quantity: 1 }]);
+    }
+  };
+
+  const handleSizeSelection = (size) => {
+    setSelectedSize(size);
+    setActiveSize(size);
+  };
+
+  const handleAddToCart = () => {
+    const desiredShoes = { ...selectedShoe, size: selectedSize };
+    if (selectedSize) {
+      addToCart(desiredShoes);
+    } else {
+      alert("Please select a size before adding to cart.");
+    }
+  };
+
   return (
     <div className="shoe-details-container">
       {/* Floating back button to get back to homepage */}
@@ -109,10 +144,24 @@ export default function ShoeDetails() {
         </div>
         <div className="shoe-size-options">
           {getSizeOptions().map((size) => (
-            <button key={size}>{size}</button>
+            <button
+              key={size}
+              onClick={() => {
+                handleSizeSelection(size);
+              }}
+              className={activeSize === size ? "active" : ""}
+            >
+              {size}
+            </button>
           ))}
         </div>
-        <button className="add-to-cart-button">ADD TO CART</button>
+
+        {/* Add to cart button */}
+        <button className="add-to-cart-button" onClick={handleAddToCart}>
+          ADD TO CART
+        </button>
+
+        {/* Description of the shoe */}
         <p className="shoe-description">{selectedShoe.description}</p>
 
         {/* 'You Might Also Like' section featuring a carousel design */}

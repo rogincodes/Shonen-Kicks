@@ -4,6 +4,7 @@ import "./styles.css";
 import Header from "./components/Header";
 import PageContent from "./components/PageContent";
 import { SelectedShoeProvider } from "./context/SelectedShoeProvider";
+import { CartItemsProvider } from "./context/CartItemsProvider";
 
 function App() {
   const [shoes, setShoes] = useState([]);
@@ -22,15 +23,18 @@ function App() {
 
   return (
     <div className="App">
-      {/* The provider allows the selected shoe to be accessed by any component within the provider */}
+      {/* Allows the selected shoe to be accessed by any component within the provider */}
       <SelectedShoeProvider>
-        <Header
-          shoes={shoes}
-          category={(selectedCategory) =>
-            setCategory(selectedCategory.toUpperCase())
-          }
-        ></Header>
-        <PageContent shoes={shoes} category={category}></PageContent>
+        {/* Allows the cart items to be accessed by any component within the provider */}
+        <CartItemsProvider>
+          <Header
+            shoes={shoes}
+            category={(selectedCategory) =>
+              setCategory(selectedCategory.toUpperCase())
+            }
+          ></Header>
+          <PageContent shoes={shoes} category={category}></PageContent>
+        </CartItemsProvider>
       </SelectedShoeProvider>
     </div>
   );

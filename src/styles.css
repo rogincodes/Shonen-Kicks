@@ -2,6 +2,7 @@ html {
   font-family: "Inter", sans-serif !important;
   font-size: 14px !important;
   color: #333 !important;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -36,10 +37,7 @@ html {
   height: 35px;
   width: 32px;
   border: none;
-}
-.icons:hover {
-  background-color: #fff;
-  border: #CCCCCC 1px solid;
+  border-radius: 50%;
 }
 .icons img {
   height: 19px;
@@ -56,6 +54,9 @@ button {
   padding: 0;
   border-radius: 8px;
   cursor: pointer;
+}
+button:focus {
+  outline: none;
 }
 
 .container {
@@ -618,6 +619,9 @@ input:focus {
   color: #686868;
   border: #e1e1e1 1px solid;
 }
+.shoe-size-options button.active {
+  outline: #111111 1.5px solid !important;
+}
 .add-to-cart-button {
   margin: 30px 24px;
   width: 100%;
@@ -702,6 +706,7 @@ input:focus {
   background: #fff;
   box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
   z-index: 999;
+  overflow: scroll;
 }
 .backdrop {
   position: fixed;
@@ -802,7 +807,7 @@ input:focus {
   margin: 0;
   font-size: 10px;
   padding-bottom: 5px;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
 }
 .quantity-and-remove {
   display: flex;
@@ -823,7 +828,7 @@ input:focus {
   font-family: revert;
   border-radius: 0;
 }
-.quantity-selector input {
+.quantity-input {
   width: 25px;
   height: 35px;
   text-align: center;
@@ -843,11 +848,13 @@ input:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 40px;
   border-bottom: #111111 1.5px solid;
-  padding: 0 24px;
+  padding: 12px 30px;
   color: #111111;
   font-weight: 700;
+}
+.cart-summary p {
+  margin: 0;
 }
 .cart-headsup {
   margin: 0;
@@ -856,4 +863,69 @@ input:focus {
   font-weight: 500;
   color: #111111;
   padding: 10px 30px;
+}
+/* Basic spinner */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ccc;
+  border-top: 2px solid #333;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  
+  opacity: 0; /* Start with the spinner hidden */
+  transition: opacity 0.3s ease-in-out; /* Add transition for smooth fade */
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* Spinner visible when loading */
+.spinner.show {
+  opacity: 1; /* Make the spinner visible when loading */
+}
+.subtotal {
+  font-family: Helvetica, sans-serif;
+  letter-spacing: 1px !important;
+}
+.payment {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px 40px 24px;
+  gap: 10px;
+}
+.payment button {
+  width: 100%;
+  height: 55px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px !important;
+  border-radius: 0 !important;
+  color: #fff;
+  background-color: #111111;
+  font-size: 12.5px;
+  border: none;
+}
+.checkout p {
+  margin: 0;
+  letter-spacing: 2px;
+}
+.middle-dot {
+  font-size: 22px;
+}
+.paypal-logo{
+  height: 70px;
+}
+.g-pay-logo {
+  height: 50px;
+}
+.gcash-logo {
+  height: 20px;
 }

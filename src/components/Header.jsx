@@ -61,7 +61,7 @@ export default function Header({ shoes, category }) {
         {/* LOGO */}
         <div className="logo">
           <a href="https://rogincodes.github.io/Shonen-Kicks/">
-            <img src="logo/header-logo.png" alt="Shonen Kicks" />
+            <img src="logos/header-logo.png" alt="Shonen Kicks" />
           </a>
         </div>
 
@@ -205,7 +205,7 @@ export default function Header({ shoes, category }) {
 
         {/* MENU FOOTER */}
         <div className="menu-footer">
-          <img src="logo/shonenkicks.png" alt="Shonen Kicks" />
+          <img src="logos/shonenkicks.png" alt="Shonen Kicks" />
           <p>Log in to pick up where you left off!</p>
           <div className="menu-footer-btn-wrapper">
             <button className="primary-button">Login</button>

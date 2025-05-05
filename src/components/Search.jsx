@@ -6,7 +6,7 @@ export default function Search({
   shoes,
   searchIsOpen,
   toggleSearch,
-  shouldRender,
+  renderSearch,
 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const searchInputRef = useRef(null);
@@ -40,7 +40,7 @@ export default function Search({
 
   return (
     <div>
-      {shouldRender && (
+      {renderSearch && (
         <div
           className={`search-container ${
             searchIsOpen ? "fade-scale-in" : "fade-scale-out"

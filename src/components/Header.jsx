@@ -11,7 +11,7 @@ export default function Header({ shoes, category }) {
   const [subMenu, setSubMenu] = useState("");
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const { setSelectedShoe } = useContext(SelectedShoeContext);
-  const [shouldRender, setShouldRender] = useState(false); // to be changed to renderSearch
+  const [renderSearch, setRenderSearch] = useState(false);
   const [cartIsOpen, setCartIsOpen] = useState(false);
   const [renderCart, setRenderCart] = useState(false);
 
@@ -23,9 +23,9 @@ export default function Header({ shoes, category }) {
     setSearchIsOpen(true);
     if (searchIsOpen) {
       setSearchIsOpen(false); // triggers fade-out
-      setTimeout(() => setShouldRender(false), 400); // unmount after fade-out
+      setTimeout(() => setRenderSearch(false), 400); // unmount after fade-out
     } else {
-      setShouldRender(true); // mount first
+      setRenderSearch(true); // mount first
       setSearchIsOpen(true); // then trigger fade-in
     }
   };
@@ -219,7 +219,7 @@ export default function Header({ shoes, category }) {
         shoes={shoes}
         searchIsOpen={searchIsOpen}
         toggleSearch={(toggle) => setSearchIsOpen(toggle)}
-        shouldRender={shouldRender}
+        renderSearch={renderSearch}
       ></Search>
 
       {/* CHECKOUT */}

@@ -204,6 +204,19 @@ export default function Filter({ shoes, shoeResults }) {
     });
   }, [sort, filteredShoes]);
 
+  useEffect(() => {
+    if (filterIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      // In case component unmounts
+      document.body.style.overflow = "";
+    };
+  }, [filterIsOpen]);
+
   return (
     <div>
       {/* OPTIONS CONTAINER */}

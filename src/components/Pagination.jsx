@@ -59,6 +59,10 @@ export default function Pagination({ shoes, currentShoes }) {
     showLastPage();
   }, [shoes, currentPage, totalPages]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when a shoe is selected
+  }, [currentPage]);
+
   return (
     <div className="pagination-wrap">
       {/* Display the previous button and the first page number if applicable */}

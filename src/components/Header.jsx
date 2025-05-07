@@ -131,6 +131,7 @@ export default function Header({ shoes, category }) {
         category={(category) => setCategorySelected(category)}
         menuIsOpen={menuIsOpen}
         toggleMenu={(toggle) => setMenuIsOpen(toggle)}
+        toggleLogin={() => toggleLogin()}
       ></Menu>
     </div>
   );

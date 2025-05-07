@@ -2,7 +2,12 @@ import "../styles.css";
 import { useState, useContext } from "react";
 import SelectedShoeContext from "../context/SelectedShoeContext";
 
-export default function Menu({ category, menuIsOpen, toggleMenu }) {
+export default function Menu({
+  category,
+  menuIsOpen,
+  toggleMenu,
+  toggleLogin,
+}) {
   const { setSelectedShoe } = useContext(SelectedShoeContext);
   const [subMenuIsOpen, setSubMenuIsOpen] = useState(false);
   const [subMenu, setSubMenu] = useState("");
@@ -145,8 +150,10 @@ export default function Menu({ category, menuIsOpen, toggleMenu }) {
         <img src="logos/shonenkicks.png" alt="Shonen Kicks" />
         <p>Log in to pick up where you left off!</p>
         <div className="menu-footer-btn-wrapper">
-          <button className="primary-button">Login</button>
-          <button>Sign In</button>
+          <button className="primary-button" onClick={() => toggleLogin()}>
+            Login
+          </button>
+          <button onClick={() => toggleLogin()}>Sign In</button>
         </div>
       </div>
     </div>

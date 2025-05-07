@@ -1,16 +1,14 @@
 import "../styles.css";
-import { useState, useContext, useEffect } from "react";
-import SelectedShoeContext from "../context/SelectedShoeContext";
+import { useState, useEffect } from "react";
 import Search from "./Search";
 import Cart from "./Cart";
 import Login from "./Login";
+import Menu from "./Menu";
 
 export default function Header({ shoes, category }) {
+  const [categorySelected, setCategorySelected] = useState("NEW RELEASES");
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const [subMenuIsOpen, setSubMenuIsOpen] = useState();
-  const [subMenu, setSubMenu] = useState("");
   const [searchIsOpen, setSearchIsOpen] = useState(false);
-  const { setSelectedShoe } = useContext(SelectedShoeContext);
   const [renderSearch, setRenderSearch] = useState(false);
   const [cartIsOpen, setCartIsOpen] = useState(false);
   const [renderCart, setRenderCart] = useState(false);
@@ -54,19 +52,13 @@ export default function Header({ shoes, category }) {
     setMenuIsOpen(!menuIsOpen);
   };
 
-  const toggleSubMenu = (selectedSubMenu) => {
-    setSubMenu(selectedSubMenu);
-    setSubMenuIsOpen(!subMenuIsOpen);
+  const setCategory = () => {
+    category(categorySelected);
   };
 
-  const closeMenu = () => {
-    setMenuIsOpen(!menuIsOpen);
-    setSubMenuIsOpen(!setSubMenuIsOpen);
-  };
-
-  const closeSubMenu = () => {
-    setSubMenuIsOpen(!subMenuIsOpen);
-  };
+  useEffect(() => {
+    setCategory();
+  }, [categorySelected]);
 
   useEffect(() => {
     if (searchIsOpen || loginIsOpen || cartIsOpen || menuIsOpen) {
@@ -74,7 +66,6 @@ export default function Header({ shoes, category }) {
     } else {
       document.body.style.overflow = "";
     }
-
     return () => {
       // In case component unmounts
       document.body.style.overflow = "";
@@ -113,133 +104,6 @@ export default function Header({ shoes, category }) {
         </div>
       </div>
 
-      {/* MAIN MENU */}
-      <div className={`menu-container ${menuIsOpen ? "active" : ""}`}>
-        <div className="close-btn-wrapper">
-          <button className="close-menu-button" onClick={toggleMenu}>
-            <img src="icons/close.png" alt="Close Menu" />
-          </button>
-        </div>
-
-        <div className="menu">
-          <button
-            onClick={() => {
-              category("New Releases");
-              setSelectedShoe(null);
-              toggleMenu();
-            }}
-          >
-            New Releases
-          </button>
-          <button onClick={() => toggleSubMenu("Men")}>
-            Men <img src="icons/chevron-right.png" alt="Men" />
-          </button>
-          <button onClick={() => toggleSubMenu("Women")}>
-            Women <img src="icons/chevron-right.png" alt="Women" />
-          </button>
-          <button onClick={() => toggleSubMenu("Kids")}>
-            Kids <img src="icons/chevron-right.png" alt="Kids" />
-          </button>
-          <button
-            onClick={() => {
-              category("Best Sellers");
-              setSelectedShoe(null);
-              toggleMenu();
-            }}
-          >
-            Best Sellers
-          </button>
-          <button
-            onClick={() => {
-              category("Kicks On Sale");
-              setSelectedShoe(null);
-              toggleMenu();
-            }}
-          >
-            Shop All Sale
-          </button>
-        </div>
-
-        {/* SUB MENU */}
-        <div className={`menu-container ${subMenuIsOpen ? "active" : ""}`}>
-          <div className="close-btn-wrapper">
-            <button className="close-menu-button" onClick={closeMenu}>
-              <img src="icons/close.png" alt="Close Menu" />
-            </button>
-            <button className="back-to-main-menu" onClick={closeSubMenu}>
-              <img src="icons/chevron-left.png" alt="Main Menu" />
-              All
-            </button>
-          </div>
-          <div className="menu">
-            <button
-              onClick={() => {
-                category(`${subMenu} Kicks`);
-                closeMenu();
-              }}
-            >
-              {subMenu}
-            </button>
-            <div className="sub-menu">
-              <button
-                onClick={() => {
-                  category(
-                    `${subMenu}${subMenu !== "Kids" ? "'s" : "'"} Kicks`
-                  );
-                  setSelectedShoe(null);
-                  closeMenu();
-                }}
-              >
-                Shop All
-              </button>
-              <button
-                onClick={() => {
-                  category(
-                    `${subMenu}${subMenu !== "Kids" ? "'s" : "'"} new releases`
-                  );
-                  setSelectedShoe(null);
-                  closeMenu();
-                }}
-              >
-                Latest Drops
-              </button>
-              <button
-                onClick={() => {
-                  category(
-                    `${subMenu}${subMenu !== "Kids" ? "'s" : "'"} Best Sellers`
-                  );
-                  setSelectedShoe(null);
-                  closeMenu();
-                }}
-              >
-                Best Sellers
-              </button>
-              <button
-                onClick={() => {
-                  category(
-                    `${subMenu}${subMenu !== "Kids" ? "'s" : "'"} On Sale`
-                  );
-                  setSelectedShoe(null);
-                  closeMenu();
-                }}
-              >
-                On Sale
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* MENU FOOTER */}
-        <div className="menu-footer">
-          <img src="logos/shonenkicks.png" alt="Shonen Kicks" />
-          <p>Log in to pick up where you left off!</p>
-          <div className="menu-footer-btn-wrapper">
-            <button className="primary-button">Login</button>
-            <button>Sign In</button>
-          </div>
-        </div>
-      </div>
-
       {/* SEARCH */}
       <Search
         shoes={shoes}
@@ -261,6 +125,13 @@ export default function Header({ shoes, category }) {
         toggleCart={(toggle) => setCartIsOpen(toggle)}
         renderCart={renderCart}
       ></Cart>
+
+      {/* MAIN MENU */}
+      <Menu
+        category={(category) => setCategorySelected(category)}
+        menuIsOpen={menuIsOpen}
+        toggleMenu={(toggle) => setMenuIsOpen(toggle)}
+      ></Menu>
     </div>
   );
 }

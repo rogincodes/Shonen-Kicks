@@ -1007,7 +1007,7 @@ input:focus {
   overflow: hidden; /* Hide extra text */
   opacity: 0; /* Initially hidden */
   width: 0; /* Set initial width to 0 for typing effect */
-  animation: typing 2s steps(30) 1s forwards, fadeIn 2.5s forwards;
+  animation: typing 2s steps(30) 500ms forwards, fadeIn 2s forwards;
 }
 @keyframes typing {
   from {

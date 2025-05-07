@@ -6,6 +6,7 @@ import PageContent from "./components/PageContent";
 import { SelectedShoeProvider } from "./context/SelectedShoeProvider";
 import { CartItemsProvider } from "./context/CartItemsProvider";
 import { UserProvider } from "./context/UserProvider";
+import Footer from "./components/Footer";
 
 function App() {
   const [shoes, setShoes] = useState([]);
@@ -37,6 +38,7 @@ function App() {
               }
             ></Header>
             <PageContent shoes={shoes} category={category}></PageContent>
+            <Footer></Footer>
           </CartItemsProvider>
         </SelectedShoeProvider>
       </UserProvider>

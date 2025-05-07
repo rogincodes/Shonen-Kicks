@@ -187,9 +187,17 @@ export default function Filter({ shoes, shoeResults }) {
       case "Alphabetically, Z-A":
         return sorted.sort((a, b) => b.name.localeCompare(a.name));
       case "Price, low to high":
-        return sorted.sort((a, b) => a.price - b.price);
+        return sorted.sort((a, b) => {
+          const aPrice = a.onSale ? a.salePrice : a.price;
+          const bPrice = b.onSale ? b.salePrice : b.price;
+          return aPrice - bPrice;
+        });
       case "Price, high to low":
-        return sorted.sort((a, b) => b.price - a.price);
+        return sorted.sort((a, b) => {
+          const aPrice = a.onSale ? a.salePrice : a.price;
+          const bPrice = b.onSale ? b.salePrice : b.price;
+          return bPrice - aPrice;
+        });
       default:
         return sorted;
     }

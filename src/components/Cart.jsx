@@ -50,7 +50,6 @@ export default function Cart({ cartIsOpen, toggleCart, renderCart }) {
     }, 0); // sum initial value here
 
     const formattedTotal = total.toLocaleString();
-    console.log(total);
     setSubtotal(formattedTotal);
   };
 
@@ -117,9 +116,13 @@ export default function Cart({ cartIsOpen, toggleCart, renderCart }) {
             {order.length > 0 ? (
               order.map((item, index) => (
                 <div key={index} className="cart-item">
-                  <img src={item.image} alt={item.name} />
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="cart-item-image"
+                  />
                   <div className="cart-item-details">
-                    <h3>{item.name}</h3>
+                    <h3 className="cart-item-name">{item.name}</h3>
                     <p>{item.size}</p>
                     <div className="price-container">
                       <p className={`${item.onSale ? "markdown" : ""}`}>

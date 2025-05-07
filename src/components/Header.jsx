@@ -1,9 +1,9 @@
 import "../styles.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import SelectedShoeContext from "../context/SelectedShoeContext";
 import Search from "./Search";
 import Cart from "./Cart";
-import { render } from "@testing-library/react";
+import Login from "./Login";
 
 export default function Header({ shoes, category }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -14,10 +14,8 @@ export default function Header({ shoes, category }) {
   const [renderSearch, setRenderSearch] = useState(false);
   const [cartIsOpen, setCartIsOpen] = useState(false);
   const [renderCart, setRenderCart] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuIsOpen(!menuIsOpen);
-  };
+  const [loginIsOpen, setLoginIsOpen] = useState(false);
+  const [renderLogin, setRenderLogin] = useState(false);
 
   const toggleSearch = () => {
     setSearchIsOpen(true);
@@ -30,6 +28,17 @@ export default function Header({ shoes, category }) {
     }
   };
 
+  const toggleLogin = () => {
+    setLoginIsOpen(!loginIsOpen);
+    if (loginIsOpen) {
+      setLoginIsOpen(false); // triggers slide-down
+      setTimeout(() => setRenderLogin(false), 500); // unmount after animation
+    } else {
+      setRenderLogin(true); // mount first
+      setLoginIsOpen(true); // then trigger slide-up
+    }
+  };
+
   const toggleCart = () => {
     setCartIsOpen(!cartIsOpen);
     if (cartIsOpen) {
@@ -39,6 +48,10 @@ export default function Header({ shoes, category }) {
       setRenderCart(true); // mount first
       setCartIsOpen(true); // then trigger slide-in
     }
+  };
+
+  const toggleMenu = () => {
+    setMenuIsOpen(!menuIsOpen);
   };
 
   const toggleSubMenu = (selectedSubMenu) => {
@@ -54,6 +67,19 @@ export default function Header({ shoes, category }) {
   const closeSubMenu = () => {
     setSubMenuIsOpen(!subMenuIsOpen);
   };
+
+  useEffect(() => {
+    if (searchIsOpen || loginIsOpen || cartIsOpen || menuIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      // In case component unmounts
+      document.body.style.overflow = "";
+    };
+  }, [searchIsOpen, loginIsOpen, cartIsOpen, menuIsOpen]);
 
   return (
     <div>
@@ -71,7 +97,7 @@ export default function Header({ shoes, category }) {
             <img src="icons/search-all.png" alt="Search" />
           </button>
 
-          <button className="icons">
+          <button className="icons" onClick={toggleLogin}>
             <img src="icons/user.png" alt="User" />
           </button>
 
@@ -221,6 +247,13 @@ export default function Header({ shoes, category }) {
         toggleSearch={(toggle) => setSearchIsOpen(toggle)}
         renderSearch={renderSearch}
       ></Search>
+
+      {/* LOGIN */}
+      <Login
+        loginIsOpen={loginIsOpen}
+        toggleLogin={(toggle) => setLoginIsOpen(toggle)}
+        renderLogin={renderLogin}
+      ></Login>
 
       {/* CHECKOUT */}
       <Cart

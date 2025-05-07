@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import PageContent from "./components/PageContent";
 import { SelectedShoeProvider } from "./context/SelectedShoeProvider";
 import { CartItemsProvider } from "./context/CartItemsProvider";
+import { UserProvider } from "./context/UserProvider";
 
 function App() {
   const [shoes, setShoes] = useState([]);
@@ -23,19 +24,22 @@ function App() {
 
   return (
     <div className="App">
-      {/* Allows the selected shoe to be accessed by any component within the provider */}
-      <SelectedShoeProvider>
-        {/* Allows the cart items to be accessed by any component within the provider */}
-        <CartItemsProvider>
-          <Header
-            shoes={shoes}
-            category={(selectedCategory) =>
-              setCategory(selectedCategory.toUpperCase())
-            }
-          ></Header>
-          <PageContent shoes={shoes} category={category}></PageContent>
-        </CartItemsProvider>
-      </SelectedShoeProvider>
+      {/* Allows the user to be accessed by any component within the provider */}
+      <UserProvider>
+        {/* Allows the selected shoe to be accessed by any component within the provider */}
+        <SelectedShoeProvider>
+          {/* Allows the cart items to be accessed by any component within the provider */}
+          <CartItemsProvider>
+            <Header
+              shoes={shoes}
+              category={(selectedCategory) =>
+                setCategory(selectedCategory.toUpperCase())
+              }
+            ></Header>
+            <PageContent shoes={shoes} category={category}></PageContent>
+          </CartItemsProvider>
+        </SelectedShoeProvider>
+      </UserProvider>
     </div>
   );
 }

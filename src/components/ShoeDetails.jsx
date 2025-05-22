@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import "../styles.css";
 import SelectedShoeContext from "../context/SelectedShoeContext";
 import Carousel from "./Carousel";
@@ -10,6 +10,7 @@ export default function ShoeDetails() {
   const { order, setOrder } = useContext(CartItemsContext);
   const [selectedSize, setSelectedSize] = useState(null);
   const [activeSize, setActiveSize] = useState(null);
+  const [width, setWidth] = useState(window.innerWidth);
 
   // Size options for different categories
   const sizeOptions = {
@@ -62,6 +63,13 @@ export default function ShoeDetails() {
     ],
   };
 
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    // Cleanup on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  });
+
   // Function to get size options based on selected shoe category
   const getSizeOptions = () => {
     if (selectedShoe.kids) return sizeOptions.kids;
@@ -102,75 +110,86 @@ export default function ShoeDetails() {
 
   return (
     <div className="shoe-details-container">
-      {/* Floating back button to get back to homepage */}
-      <button className="floating-back" onClick={() => setSelectedShoe(null)}>
-        <img src="./icons/back-button.png" alt="Back" />
-      </button>
-      {/* Selected shoe details section */}
-      <img src={selectedShoe.image} alt={selectedShoe.name} />
-      <div className="shoe-details">
-        <p className="shoe-details-anime">{selectedShoe.anime.toUpperCase()}</p>
-        <p className="shoe-details-type">
-          {selectedShoe.kids
-            ? "KIDS' SHOES"
-            : selectedShoe.gender === "Men"
-            ? "MEN'S SHOES"
-            : "WOMEN'S SHOES"}
-        </p>
-        <h1 className="shoe-details-name">{selectedShoe.name.toUpperCase()}</h1>
-        <div className="price-container">
-          <p
-            className={`shoe-details-price ${
-              selectedShoe.onSale ? "markdown" : ""
-            }`}
-          >
-            ${selectedShoe.price}
-          </p>
-          <p
-            className={`shoe-details-price sale-price ${
-              selectedShoe.onSale ? "" : "hide"
-            }`}
-          >
-            ${selectedShoe.salePrice}
-          </p>
-        </div>
-
-        <div className="shoe-select">
-          <p>Select Size</p>
-          <div>
-            <img src="./icons/measure.png" alt="Size Guide" />
-            <p>Size Guide</p>
-          </div>
-        </div>
-        <div className="shoe-size-options">
-          {getSizeOptions().map((size) => (
-            <button
-              key={size}
-              onClick={() => {
-                handleSizeSelection(size);
-              }}
-              className={activeSize === size ? "active" : ""}
-            >
-              {size}
-            </button>
-          ))}
-        </div>
-
-        {/* Add to cart button */}
-        <button className="add-to-cart-button" onClick={handleAddToCart}>
-          ADD TO CART
+      <div className="shoe-details-content">
+        {/* Floating back button to get back to homepage */}
+        <button className="floating-back" onClick={() => setSelectedShoe(null)}>
+          <img src="./icons/back-button.png" alt="Back" />
         </button>
+        {/* Selected shoe details section */}
+        <div className="shoe-details-image-wrapper">
+          <img src={selectedShoe.image} alt={selectedShoe.name} />
+        </div>
 
-        {/* Description of the shoe */}
-        <p className="shoe-description">{selectedShoe.description}</p>
+        <div className="shoe-details">
+          <p className="shoe-details-anime">
+            {selectedShoe.anime.toUpperCase()}
+          </p>
+          <p className="shoe-details-type">
+            {selectedShoe.kids
+              ? "KIDS' SHOES"
+              : selectedShoe.gender === "Men"
+              ? "MEN'S SHOES"
+              : "WOMEN'S SHOES"}
+          </p>
+          <h1 className="shoe-details-name">
+            {selectedShoe.name.toUpperCase()}
+          </h1>
+          <div className="price-container">
+            <p
+              className={`shoe-details-price ${
+                selectedShoe.onSale ? "markdown" : ""
+              }`}
+            >
+              ${selectedShoe.price}
+            </p>
+            <p
+              className={`shoe-details-price sale-price ${
+                selectedShoe.onSale ? "" : "hide"
+              }`}
+            >
+              ${selectedShoe.salePrice}
+            </p>
+          </div>
 
-        {/* 'You Might Also Like' section featuring a carousel design */}
-        <div className="shoe-reccommendations">
-          <h3 className="recommendation-title">YOU MIGHT ALSO LIKE</h3>
-          <div className="shoe-recommendations-list">
-            <ShoesProvider>
-              <Carousel />
-            </ShoesProvider>
+          <div className="shoe-select">
+            <p>Select Size</p>
+            <div>
+              <img src="./icons/measure.png" alt="Size Guide" />
+              <p>Size Guide</p>
+            </div>
+          </div>
+          <div className="shoe-size-options">
+            {getSizeOptions().map((size) => (
+              <button
+                key={size}
+                onClick={() => {
+                  handleSizeSelection(size);
+                }}
+                className={activeSize === size ? "active" : ""}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
+
+          {/* Add to cart button */}
+          <button className="add-to-cart-button" onClick={handleAddToCart}>
+            ADD TO CART
+          </button>
+
+          {/* Description of the shoe */}
+          <p className="shoe-description">{selectedShoe.description}</p>
+
+          {/* 'You Might Also Like' section featuring a carousel design */}
+          <div
+            className={`shoe-recommendations ${width >= 1024 ? "hide" : ""}`}
+          >
+            <h3 className="recommendation-title">YOU MIGHT ALSO LIKE</h3>
+            <div className="shoe-recommendations-list">
+              <ShoesProvider>
+                <Carousel />
+              </ShoesProvider>
+            </div>
           </div>
         </div>
       </div>

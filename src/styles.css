@@ -54,7 +54,11 @@ html {
 }
 .icons:hover {
   background-color: #f0f0f0;
-  cursor: pointer;
+}
+.icons:active {
+  background-color: #d9d9d9; /* Slightly darker background while clicking */
+  transform: scale(0.95);    /* Optional: a subtle shrink effect */
+  transition: transform 0.1s;
 }
 .cart-image {
   height: 26px !important;
@@ -225,7 +229,10 @@ input:focus {
 .close-filter-button:hover {
   background-color: #555;
   border-color: #555;
-  cursor: pointer;
+}
+.close-filter-button:active {
+  background-color: #333;  /* Slightly darker than hover for pressed effect */
+  border-color: #333;
 }
 .filter-container.active {
   left: 0;
@@ -290,6 +297,13 @@ input:focus {
   border-color: #4d4d4d;
   color: #fff !important;
 }
+.primary-button:active {
+  background-color: #2a2a2a;   /* Darker than hover for pressed effect */
+  border-color: #2a2a2a;
+  color: #fff !important;
+  transform: scale(0.97);      /* Slight shrink for tactile feedback */
+  transition: transform 0.1s;
+}
 .hide {
   display: none;
 }
@@ -334,6 +348,10 @@ input:focus {
   border-color: #5c5c5c;
   cursor: pointer;
 }
+.clear-all-button:active {
+  background-color: #4a4a4a;  /* Darker than hover */
+  border-color: #4a4a4a;
+}
 .remove-filter {
   width: fit-content;
   padding: 0 10px;
@@ -346,6 +364,10 @@ input:focus {
   background-color: #d5d5d5;
   border-color: #d5d5d5;
   cursor: pointer;
+}
+.remove-filter:active {
+  background-color: #bfbfbf;  /* Slightly darker than hover */
+  border-color: #bfbfbf;
 }
 .remove-x {
   margin-left: 6px;
@@ -455,6 +477,9 @@ input:focus {
   background-color: #f2f2f2;
   cursor: pointer;
 }
+.close-menu-button:active {
+  background-color: #dcdcdc;   /* A bit darker than hover */
+}
 .menu {
   display: flex;
   flex-direction: column;
@@ -541,6 +566,9 @@ input:focus {
 .pagination-wrap button:hover {
   background-color: #f5f5f5;
   cursor: pointer;
+}
+.pagination-wrap button:active {
+  background-color: #e0e0e0;  /* Darker than hover */
 }
 .pagination-arrows {
   display: flex;
@@ -737,6 +765,11 @@ input:focus {
   background-color: #8a8a8a;
   cursor: pointer;
 }
+.add-to-cart-button:active {
+  background-color: #6e6e6e;  /* Darker than hover */
+  transform: scale(0.95);     /* Optional subtle shrink */
+  transition: transform 0.1s;
+}
 .shoe-description {
   text-align: left;
   line-height: 1.8;
@@ -909,6 +942,9 @@ input:focus {
   background-color: #f2f2f2;
   cursor: pointer;
 }
+.close-cart-panel:active {
+  background-color: #dddddd;  /* Slightly darker than hover */
+}
 .cart-items {
   display: flex;
   flex-direction: column;
@@ -971,8 +1007,12 @@ input:focus {
   border-radius: 0;
 }
 .quantity-selector button:hover {
-  color: #444444;
-  cursor: pointer;
+  color: #444444;              /* Darker shade for emphasis */
+  background-color: #f0f0f0;   /* Soft background to indicate hover */
+}
+.quantity-selector button:active {
+  color: #222222;              /* Slightly darker text */
+  background-color: #e0e0e0;   /* Darker than hover for tactile feedback */
 }
 .quantity-input {
   width: 25px;
@@ -1058,6 +1098,12 @@ input:focus {
   border-color: #999;
   cursor: pointer;
 }
+.payment button:active {
+  border-color: #777;             /* Darker than hover for depth */
+  background-color: #f2f2f2;      /* Light press feedback */
+  transform: scale(0.97);         /* Slight shrink for press effect */
+  transition: transform 0.1s;
+}
 .checkout {
   display: flex;
   justify-content: center;
@@ -1071,8 +1117,12 @@ input:focus {
   cursor: pointer;
 }
 .checkout:hover {
-  background-color: #8a8a8a;
-  cursor: pointer;
+  background-color: #8a8a8a !important;
+}
+.checkout:active {
+  background-color: #6e6e6e !important;   /* Darker for pressed feedback */
+  transform: scale(0.97) !important;      /* Optional press effect */
+  transition: transform 0.1s !important;
 }
 .checkout p {
   margin: 0;
@@ -1231,11 +1281,14 @@ input:focus {
   transition: background 0.3s;
   margin: 2px 0 8px 0;
 }
-
 .login-button:hover {
   background-color: #8a8a8a;
 }
-
+.login-button:active {
+  background-color: #6e6e6e;   /* Darker for pressed feedback */
+  transform: scale(0.97);      /* Subtle press effect */
+  transition: transform 0.1s;
+}
 .logged-in {
   display: flex;
   justify-content: center;

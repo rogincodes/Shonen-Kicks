@@ -10,6 +10,8 @@ export default function Search({
 }) {
   const [searchTerm, setSearchTerm] = useState("");
   const searchInputRef = useRef(null);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [topResults, setTopResults] = useState([]);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -28,15 +30,29 @@ export default function Search({
     return matchesSearchTerm(shoe, searchTerm);
   });
 
-  // Used to limit the number of results shown in the search results
-  const firstSixResults = filteredShoes.slice(0, 8);
-
-  // This effect runs when the search is opened and focuses the input field
   useEffect(() => {
+    // focuses the input field
     if (searchIsOpen) {
       searchInputRef.current.focus();
     }
-  }, [searchIsOpen]);
+    // Used to limit the number of results shown in the search results
+    var limitedResults = [];
+    if (width >= 1024 && width < 1280) {
+      limitedResults = filteredShoes.slice(0, 4);
+    } else if (width >= 1280) {
+      limitedResults = filteredShoes.slice(0, 5);
+    } else {
+      limitedResults = filteredShoes.slice(0, 6);
+    }
+    setTopResults(limitedResults);
+  }, [searchIsOpen, width, searchTerm]);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    // Cleanup on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, [width]);
 
   return (
     <div>
@@ -47,6 +63,13 @@ export default function Search({
           }`}
         >
           <div className="search-head">
+            {width >= 1024 && (
+              <div className="logo">
+                <a href="https://rogincodes.github.io/Shonen-Kicks/">
+                  <img src="logos/header-logo.png" alt="Shonen Kicks" />
+                </a>
+              </div>
+            )}
             <div className="search-all">
               <img src="icons/search-all.png" alt="Search" />
               <input
@@ -70,8 +93,8 @@ export default function Search({
           {searchTerm && (
             <div className="search-results">
               <p className="top-results">Top Results</p>
-              <div className="shoes-grid">
-                {firstSixResults.map((shoe) => (
+              <div className="shoes-grid grid-wrap">
+                {topResults.map((shoe) => (
                   <div onClick={() => toggleSearch(false)} key={shoe.id}>
                     <ShoeCard key={shoe.id} shoe={shoe}></ShoeCard>
                   </div>

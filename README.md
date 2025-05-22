@@ -4,7 +4,7 @@ Welcome to **Shonen Kicks**! Your next legendary pair awaits. Step into the worl
 
 🔗 **[Visit Shonen Kicks](https://rogincodes.github.io/Shonen-Kicks/)**
 
-> **Note**: The website is hosted on a free plan here in GitHub, so it may take some time to load all the images.
+> **Note**: This website is hosted on GitHub Pages’ free plan, so image loading might take a little longer than usual.
 
 ## 🚀 Features
 

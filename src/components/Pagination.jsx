@@ -6,7 +6,7 @@ export default function Pagination({ shoes, currentShoes }) {
   const [showPrev, setShowPrev] = useState(false);
   const [showNext, setShowNext] = useState(false);
 
-  const shoesPerPage = 10; // Number of shoes to display per page
+  const shoesPerPage = 12; // Number of shoes to display per page
   // Calculate the total number of pages based on the number of shoes and shoes per page
   const totalPages = Math.ceil(shoes.length / shoesPerPage);
   const indexOfLastShoe = currentPage * shoesPerPage;

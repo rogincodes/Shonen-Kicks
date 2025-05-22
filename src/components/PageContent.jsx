@@ -25,16 +25,16 @@ export default function PageContent({ shoes, category }) {
     const d1 = new Date(date1);
     const d2 = new Date(date2);
     if (d1 > today || d2 > today) {
-      return 91; // if it is later than 90 days, return a number greater than 90
+      return 181; // if it is later than 181 days, return a number greater than 90
     }
     const diffTime = Math.abs(d2 - d1);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays;
   };
 
-  // Check if the shoe is a new release (within 90 days (3 months))
+  // Check if the shoe is a new release (within 180 days (6 months))
   const isNewRelease = (shoe) => {
-    return getDaysDifference(today, shoe.releaseDate) <= 90;
+    return getDaysDifference(today, shoe.releaseDate) <= 190;
   };
 
   // Filter shoes based on the selected category

@@ -6,6 +6,7 @@ export default function Cart({ cartIsOpen, toggleCart, renderCart }) {
   const { order, setOrder } = useContext(CartItemsContext);
   const [loadingIndex, setLoadingIndex] = useState(null); // track which input is loading
   const [subtotal, setSubtotal] = useState(0);
+  const [width, setWidth] = useState(window.innerWidth);
 
   const handleQuantityChange = (index, event) => {
     // Just display the quantity but will change it on blur
@@ -91,6 +92,13 @@ export default function Cart({ cartIsOpen, toggleCart, renderCart }) {
   };
 
   useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    // Cleanup on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  });
+
+  useEffect(() => {
     computeTotal();
   }, [order]);
 
@@ -99,7 +107,9 @@ export default function Cart({ cartIsOpen, toggleCart, renderCart }) {
       {renderCart && (
         <div
           className={`cart-panel ${
-            cartIsOpen ? "slide-in-left" : "slide-out-left"
+            cartIsOpen
+              ? `${width >= 1024 ? "slide-in-right" : "slide-in-left"}`
+              : `${width >= 1024 ? "slide-out-right" : "slide-out-left"}`
           }`}
         >
           <div className="cart-header">
@@ -112,110 +122,114 @@ export default function Cart({ cartIsOpen, toggleCart, renderCart }) {
             </button>
           </div>
 
-          <div className="cart-items">
-            {order.length > 0 ? (
-              order.map((item, index) => (
-                <div key={index} className="cart-item">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="cart-item-image"
-                  />
-                  <div className="cart-item-details">
-                    <h3 className="cart-item-name">{item.name}</h3>
-                    <p>{item.size}</p>
-                    <div className="price-container">
-                      <p className={`${item.onSale ? "markdown" : ""}`}>
-                        ${item.price}
-                      </p>
-                      <p className={`sale-price ${item.onSale ? "" : "hide"}`}>
-                        ${item.salePrice}
-                      </p>
-                    </div>
-                    <div className="quantity-and-remove">
-                      <div className="quantity-selector">
-                        <button
-                          onClick={(event) => {
-                            handleSubtract(index);
-                            event.target.blur();
-                          }}
+          <div className="cart-container">
+            <div className="cart-items">
+              {order.length > 0 ? (
+                order.map((item, index) => (
+                  <div key={index} className="cart-item">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="cart-item-image"
+                    />
+                    <div className="cart-item-details">
+                      <h3 className="cart-item-name">{item.name}</h3>
+                      <p>{item.size}</p>
+                      <div className="price-container">
+                        <p className={`${item.onSale ? "markdown" : ""}`}>
+                          ${item.price}
+                        </p>
+                        <p
+                          className={`sale-price ${item.onSale ? "" : "hide"}`}
                         >
-                          −
-                        </button>
-                        <input
-                          key={index}
-                          type="number"
-                          value={item.quantity}
-                          onChange={(event) =>
-                            handleQuantityChange(index, event)
-                          }
-                          onBlur={(event) => handleBlur(index, event)}
-                          disabled={loadingIndex === index} // disables the input while loading
-                          className="quantity-input"
-                        />
+                          ${item.salePrice}
+                        </p>
+                      </div>
+                      <div className="quantity-and-remove">
+                        <div className="quantity-selector">
+                          <button
+                            onClick={(event) => {
+                              handleSubtract(index);
+                              event.target.blur();
+                            }}
+                          >
+                            −
+                          </button>
+                          <input
+                            key={index}
+                            type="number"
+                            value={item.quantity}
+                            onChange={(event) =>
+                              handleQuantityChange(index, event)
+                            }
+                            onBlur={(event) => handleBlur(index, event)}
+                            disabled={loadingIndex === index} // disables the input while loading
+                            className="quantity-input no-arrows"
+                          />
+                          <button
+                            onClick={(event) => {
+                              handleAdd(index);
+                              event.target.blur();
+                            }}
+                          >
+                            +
+                          </button>
+                        </div>
+                        {loadingIndex === index && (
+                          <div
+                            className={`spinner ${
+                              loadingIndex === index ? "show" : ""
+                            }`}
+                          />
+                        )}
                         <button
-                          onClick={(event) => {
-                            handleAdd(index);
-                            event.target.blur();
-                          }}
+                          className="remove-item"
+                          onClick={() => handleRemove(index)}
                         >
-                          +
+                          REMOVE
                         </button>
                       </div>
-                      {loadingIndex === index && (
-                        <div
-                          className={`spinner ${
-                            loadingIndex === index ? "show" : ""
-                          }`}
-                        />
-                      )}
-                      <button
-                        className="remove-item"
-                        onClick={() => handleRemove(index)}
-                      >
-                        REMOVE
-                      </button>
                     </div>
                   </div>
-                </div>
-              ))
-            ) : (
-              <p>Your cart is empty.</p>
-            )}
-          </div>
+                ))
+              ) : (
+                <p>Your cart is empty.</p>
+              )}
+            </div>
 
-          <div className="cart-summary">
-            <p>Subtotal</p>
-            <p className="subtotal">${subtotal}</p>
-          </div>
+            <div className="cart-summary">
+              <p>Subtotal</p>
+              <p className="subtotal">${subtotal}</p>
+            </div>
 
-          <p className="cart-headsup">
-            Shipping and taxes calculated at checkout
-          </p>
+            <p className="cart-headsup">
+              Shipping and taxes calculated at checkout
+            </p>
 
-          <div className="payment">
-            <button className="checkout">
-              <p>CHECKOUT &emsp;</p>
-              <p className="middle-dot">·</p>
-              <p className="subtotal">&emsp; ${subtotal}</p>
-            </button>
-            <button>
-              <img
-                src="logos/paypal.png"
-                alt="PayPal"
-                className="paypal-logo"
-              />
-            </button>
-            <button>
-              <img
-                src="logos/google-pay.png"
-                alt="Google Pay"
-                className="g-pay-logo"
-              />
-            </button>
-            <button>
-              <img src="logos/gcash.png" alt="Gcash" className="gcash-logo" />
-            </button>
+            <div className="payment">
+              <button className="checkout">
+                <p>CHECKOUT &emsp;</p>
+                <p className="middle-dot">·</p>
+                <p className="subtotal">&emsp; ${subtotal}</p>
+              </button>
+              <button>
+                <img
+                  src="logos/paypal.png"
+                  alt="PayPal"
+                  className="paypal-logo"
+                />
+              </button>
+              <button>
+                <img
+                  src="logos/google-pay.png"
+                  alt="Google Pay"
+                  className="g-pay-logo"
+                />
+              </button>
+              <button>
+                <img src="logos/gcash.png" alt="Gcash" className="gcash-logo" />
+              </button>
+            </div>
           </div>
         </div>
       )}

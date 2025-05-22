@@ -1,9 +1,11 @@
 import "../styles.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Search from "./Search";
 import Cart from "./Cart";
 import Login from "./Login";
 import Menu from "./Menu";
+import SelectedShoeContext from "../context/SelectedShoeContext";
+import CartItemsContext from "../context/CartItemsContext";
 
 export default function Header({ shoes, category }) {
   const [categorySelected, setCategorySelected] = useState("NEW RELEASES");
@@ -14,6 +16,10 @@ export default function Header({ shoes, category }) {
   const [renderCart, setRenderCart] = useState(false);
   const [loginIsOpen, setLoginIsOpen] = useState(false);
   const [renderLogin, setRenderLogin] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const { setSelectedShoe } = useContext(SelectedShoeContext);
+  const { order } = useContext(CartItemsContext);
 
   const toggleSearch = () => {
     setSearchIsOpen(true);
@@ -52,9 +58,20 @@ export default function Header({ shoes, category }) {
     setMenuIsOpen(!menuIsOpen);
   };
 
+  const toggleDropdown = () => {
+    setActiveDropdown(null);
+  };
+
   const setCategory = () => {
     category(categorySelected);
   };
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    // Cleanup on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  });
 
   useEffect(() => {
     setCategory();
@@ -73,66 +90,269 @@ export default function Header({ shoes, category }) {
   }, [searchIsOpen, loginIsOpen, cartIsOpen, menuIsOpen]);
 
   return (
-    <div>
+    <div className="header-container">
       <div className="header">
-        {/* LOGO */}
-        <div className="logo">
-          <a href="https://rogincodes.github.io/Shonen-Kicks/">
-            <img src="logos/header-logo.png" alt="Shonen Kicks" />
-          </a>
+        <div className="head-menu">
+          {/* LOGO */}
+          <div className="logo">
+            <a href="https://rogincodes.github.io/Shonen-Kicks/">
+              <img src="logos/header-logo.png" alt="Shonen Kicks" />
+            </a>
+          </div>
+
+          {width >= 1024 && (
+            <div className="categories-wrapper">
+              <nav>
+                <ul>
+                  <li className="menu-item border-bot">
+                    <button
+                      className="menu-link"
+                      onClick={() => {
+                        category("new releases");
+                        setSelectedShoe(null);
+                      }}
+                    >
+                      &nbsp;NEW RELEASES&nbsp;
+                    </button>
+                  </li>
+                  <li
+                    className="menu-item"
+                    onMouseEnter={() => setActiveDropdown("men")}
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    <button
+                      className="menu-link"
+                      onClick={() => {
+                        category("men's kicks");
+                        setSelectedShoe(null);
+                      }}
+                    >
+                      MEN
+                    </button>
+                    {activeDropdown === "men" && (
+                      <div className="dropdown">
+                        <button
+                          onClick={(e) => {
+                            category("men's new releases");
+                            toggleDropdown();
+                            setSelectedShoe(null);
+                          }}
+                        >
+                          Latest Drops
+                        </button>
+                        <button
+                          onClick={() => {
+                            category("men's best sellers");
+                            toggleDropdown();
+                            setSelectedShoe(null);
+                          }}
+                        >
+                          Best Sellers
+                        </button>
+                        <button
+                          onClick={() => {
+                            category("men's on sale");
+                            toggleDropdown();
+                            setSelectedShoe(null);
+                          }}
+                        >
+                          On Sale
+                        </button>
+                      </div>
+                    )}
+                  </li>
+                  <li
+                    className="menu-item"
+                    onMouseEnter={() => setActiveDropdown("women")}
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    <button
+                      className="menu-link"
+                      onClick={() => {
+                        category("women's kicks");
+                        setSelectedShoe(null);
+                      }}
+                    >
+                      WOMEN
+                    </button>
+                    {activeDropdown === "women" && (
+                      <div className="dropdown">
+                        <button
+                          onClick={() => {
+                            category("women's new releases");
+                            toggleDropdown();
+                            setSelectedShoe(null);
+                          }}
+                        >
+                          Latest Drops
+                        </button>
+                        <button
+                          onClick={() => {
+                            category("women's best sellers");
+                            toggleDropdown();
+                            setSelectedShoe(null);
+                          }}
+                        >
+                          Best Sellers
+                        </button>
+                        <button
+                          onClick={() => {
+                            category("women's on sale");
+                            toggleDropdown();
+                            setSelectedShoe(null);
+                          }}
+                        >
+                          On Sale
+                        </button>
+                      </div>
+                    )}
+                  </li>
+                  <li
+                    className="menu-item"
+                    onMouseEnter={() => setActiveDropdown("kids")}
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    <button
+                      className="menu-link"
+                      onClick={() => {
+                        category("kids' kicks");
+                        setSelectedShoe(null);
+                      }}
+                    >
+                      KIDS
+                    </button>
+                    {activeDropdown === "kids" && (
+                      <div className="dropdown">
+                        <button
+                          onClick={() => {
+                            category("kids' new releases");
+                            toggleDropdown();
+                            setSelectedShoe(null);
+                          }}
+                        >
+                          Latest Drops
+                        </button>
+                        <button
+                          onClick={() => {
+                            category("kids' best sellers");
+                            toggleDropdown();
+                            setSelectedShoe(null);
+                          }}
+                        >
+                          Best Sellers
+                        </button>
+                        <button
+                          onClick={() => {
+                            category("kids' on sale");
+                            toggleDropdown();
+                            setSelectedShoe(null);
+                          }}
+                        >
+                          On Sale
+                        </button>
+                      </div>
+                    )}
+                  </li>
+                  <li className="menu-item border-bot">
+                    <button
+                      className="menu-link"
+                      onClick={() => {
+                        category("best sellers");
+                        setSelectedShoe(null);
+                      }}
+                    >
+                      &nbsp;BEST SELLERS&nbsp;
+                    </button>
+                  </li>
+                  <li className="menu-item border-bot">
+                    <button
+                      className="menu-link"
+                      onClick={() => {
+                        category("kicks on sale");
+                        setSelectedShoe(null);
+                      }}
+                    >
+                      &nbsp;SHOP ALL SALE&nbsp;
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          )}
+
+          {/* HEADER BUTTONS */}
+          <div className="top-buttons">
+            <button className="icons" onClick={toggleSearch}>
+              <img src="icons/search-all.png" alt="Search" />
+            </button>
+
+            {searchIsOpen && (
+              <div className="backdrop" onClick={toggleSearch}></div>
+            )}
+
+            <button className="icons" onClick={toggleLogin}>
+              <img src="icons/user.png" alt="User" />
+            </button>
+
+            <button className="icons" onClick={toggleCart}>
+              <img
+                src={`${
+                  order.length === 0
+                    ? "icons/shopping-basket-empty.png"
+                    : "icons/shopping-basket-not-empty.png"
+                }`}
+                alt="Search"
+                className={`${order.length === 0 ? "" : "cart-image"}`}
+              />
+            </button>
+
+            {cartIsOpen && (
+              <div className="backdrop" onClick={toggleCart}></div>
+            )}
+
+            {width < 1024 && (
+              <button className="icons" onClick={toggleMenu}>
+                <img src="icons/menu.png" alt="Menu" />
+              </button>
+            )}
+
+            <div
+              className={`overlay ${menuIsOpen ? "show" : ""}`}
+              onClick={toggleMenu}
+            ></div>
+          </div>
         </div>
 
-        {/* HEADER BUTTONS */}
-        <div className="top-buttons">
-          <button className="icons" onClick={toggleSearch}>
-            <img src="icons/search-all.png" alt="Search" />
-          </button>
+        {/* SEARCH */}
+        <Search
+          shoes={shoes}
+          searchIsOpen={searchIsOpen}
+          toggleSearch={(toggle) => setSearchIsOpen(toggle)}
+          renderSearch={renderSearch}
+        ></Search>
 
-          <button className="icons" onClick={toggleLogin}>
-            <img src="icons/user.png" alt="User" />
-          </button>
+        {/* LOGIN */}
+        <Login
+          loginIsOpen={loginIsOpen}
+          toggleLogin={(toggle) => setLoginIsOpen(toggle)}
+          renderLogin={renderLogin}
+        ></Login>
 
-          <button className="icons" onClick={toggleCart}>
-            <img src="icons/shopping-basket.png" alt="Search" />
-          </button>
+        {/* CHECKOUT */}
+        <Cart
+          cartIsOpen={cartIsOpen}
+          toggleCart={(toggle) => setCartIsOpen(toggle)}
+          renderCart={renderCart}
+        ></Cart>
 
-          {cartIsOpen && <div className="backdrop" onClick={toggleCart}></div>}
-
-          <button className="icons" onClick={toggleMenu}>
-            <img src="icons/menu.png" alt="Menu" />
-          </button>
-        </div>
+        {/* MAIN MENU */}
+        <Menu
+          category={(category) => setCategorySelected(category)}
+          menuIsOpen={menuIsOpen}
+          toggleMenu={(toggle) => setMenuIsOpen(toggle)}
+          toggleLogin={() => toggleLogin()}
+        ></Menu>
       </div>
-
-      {/* SEARCH */}
-      <Search
-        shoes={shoes}
-        searchIsOpen={searchIsOpen}
-        toggleSearch={(toggle) => setSearchIsOpen(toggle)}
-        renderSearch={renderSearch}
-      ></Search>
-
-      {/* LOGIN */}
-      <Login
-        loginIsOpen={loginIsOpen}
-        toggleLogin={(toggle) => setLoginIsOpen(toggle)}
-        renderLogin={renderLogin}
-      ></Login>
-
-      {/* CHECKOUT */}
-      <Cart
-        cartIsOpen={cartIsOpen}
-        toggleCart={(toggle) => setCartIsOpen(toggle)}
-        renderCart={renderCart}
-      ></Cart>
-
-      {/* MAIN MENU */}
-      <Menu
-        category={(category) => setCategorySelected(category)}
-        menuIsOpen={menuIsOpen}
-        toggleMenu={(toggle) => setMenuIsOpen(toggle)}
-        toggleLogin={() => toggleLogin()}
-      ></Menu>
     </div>
   );
 }

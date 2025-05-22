@@ -37,7 +37,7 @@ export default function Login({ loginIsOpen, toggleLogin, renderLogin }) {
   return (
     <div>
       {renderLogin && (
-        <>
+        <div className="login-container">
           <div
             className={`login-backdrop ${loginIsOpen ? "" : "fade-out"}`}
             onClick={() => toggleLogin(false)}
@@ -96,7 +96,7 @@ export default function Login({ loginIsOpen, toggleLogin, renderLogin }) {
               </div>
             )}
           </div>
-        </>
+        </div>
       )}
     </div>
   );

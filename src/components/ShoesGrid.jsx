@@ -3,7 +3,7 @@ import ShoeCard from "./ShoeCard";
 
 export default function ShoesGrid({ shoes, shoeCount }) {
   return (
-    <div>
+    <div className="shoes-grid-wrapper">
       <p className="results-count">
         <strong>{shoeCount}</strong> Results
       </p>
@@ -13,7 +13,6 @@ export default function ShoesGrid({ shoes, shoeCount }) {
           <ShoeCard key={shoe.id} shoe={shoe}></ShoeCard>
         ))}
       </div>
-      <div></div>
     </div>
   );
 }

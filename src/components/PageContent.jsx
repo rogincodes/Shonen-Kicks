@@ -1,16 +1,21 @@
 import { useState, useContext, useEffect } from "react";
 import "../styles.css";
 import SubHeader from "./SubHeader";
-import Filter from "./Filter";
+import Options from "./Options";
 import ShoesGrid from "./ShoesGrid";
 import Pagination from "./Pagination";
 import SelectedShoeContext from "../context/SelectedShoeContext";
 import ShoeDetails from "./ShoeDetails";
+import LeftFilter from "./LeftFilter";
+import { FiltersProvider } from "../context/FiltersProvider";
+import { ShoesProvider } from "../context/ShoesProvider";
+import Carousel from "./Carousel";
 
 export default function PageContent({ shoes, category }) {
   const [shoeResults, setShoeResults] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
   const { selectedShoe } = useContext(SelectedShoeContext);
+  const [width, setWidth] = useState(window.innerWidth);
 
   let shoeCount = shoeResults.length;
 
@@ -62,26 +67,59 @@ export default function PageContent({ shoes, category }) {
     window.scrollTo(0, 0); // Scroll to the top of the page when a shoe is selected
   }, [selectedShoe]);
 
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, [width]);
+
   return (
-    <div className="container">
-      {/* If a shoe is selected, show the shoe details */}
-      {/* Otherwise, show the shoes grid and pagination */}
-      {selectedShoe ? (
-        <ShoeDetails></ShoeDetails>
-      ) : (
-        <div>
-          <SubHeader category={category}></SubHeader>
-          <Filter
-            shoes={categorizedShoes}
-            shoeResults={(results) => setShoeResults(results)}
-          ></Filter>
-          <ShoesGrid shoes={currentItems} shoeCount={shoeCount}></ShoesGrid>
-          <Pagination
-            shoes={shoeResults}
-            currentShoes={(items) => setCurrentItems(items)}
-          ></Pagination>
-        </div>
-      )}
+    <div className="page-content-container">
+      <div className="page-content">
+        {/* If a shoe is selected, show the shoe details */}
+        {selectedShoe ? (
+          <div>
+            <ShoeDetails></ShoeDetails>
+            <div className="recommendations-container">
+              <div
+                className={`shoe-recommendations ${width < 1024 ? "hide" : ""}`}
+              >
+                <h3 className="recommendation-title">YOU MIGHT ALSO LIKE</h3>
+                <div className="shoe-recommendations-list">
+                  <ShoesProvider>
+                    <Carousel />
+                  </ShoesProvider>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <SubHeader category={category}></SubHeader>
+            {/* Allows the filters to be accessed by any component within the provider */}
+            <FiltersProvider>
+              {/* Left Filter will only show when width is >= 1024 */}
+              <LeftFilter></LeftFilter>
+              <div className={`${width >= 1024 ? "right-side-container" : ""}`}>
+                <Options
+                  shoes={categorizedShoes}
+                  shoeResults={(results) => setShoeResults(results)}
+                ></Options>
+                <ShoesGrid
+                  shoes={currentItems}
+                  shoeCount={shoeCount}
+                ></ShoesGrid>
+                <Pagination
+                  shoes={shoeResults}
+                  currentShoes={(items) => setCurrentItems(items)}
+                ></Pagination>
+              </div>
+            </FiltersProvider>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

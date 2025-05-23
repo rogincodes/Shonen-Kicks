@@ -48,6 +48,9 @@ html {
   width: 35px;
   border: none;
   border-radius: 50px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  -webkit-tap-highlight-color: transparent; /* Removes tap highlight on iOS */
+  outline: none; /* Removes focus ring */
 }
 .icons img {
   height: 21px;
@@ -59,6 +62,9 @@ html {
   background-color: #d9d9d9; /* Slightly darker background while clicking */
   transform: scale(0.95);    /* Optional: a subtle shrink effect */
   transition: transform 0.1s;
+}
+.icons:focus {
+  background-color: transparent; /* Reset bg if focus lingers */
 }
 .cart-image {
   height: 26px !important;
@@ -291,6 +297,9 @@ input:focus {
   background-color: #333333;
   color: #fff !important;
   border: #333333 1px solid !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 .primary-button:hover {
   background-color: #4d4d4d;
@@ -303,6 +312,11 @@ input:focus {
   color: #fff !important;
   transform: scale(0.97);      /* Slight shrink for tactile feedback */
   transition: transform 0.1s;
+}
+.primary-button:focus {
+  background-color: #333; 
+  border-color: #333;         
+  color: #fff;                
 }
 .hide {
   display: none;
@@ -321,10 +335,17 @@ input:focus {
   background-color: #f6f6f6;
   padding-left: 8px;
   cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 .sort-dropdown:hover {
   background-color: #f1f1f1;
   border-color: #999;
+}
+.sort-dropdown:focus {
+  background-color: #f6f6f6;
+  border-color: #CCCCCC;        
 }
 
 .remove-selected {
@@ -342,6 +363,9 @@ input:focus {
   background-color: #6e6e6e;
   border: #6e6e6e 1px solid;
   border-radius: 20px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 .clear-all-button:hover {
   background-color: #5c5c5c;
@@ -352,6 +376,11 @@ input:focus {
   background-color: #4a4a4a;  /* Darker than hover */
   border-color: #4a4a4a;
 }
+.clear-all-button:focus {
+  background-color: #6e6e6e;  /* reset to normal */
+  border-color: #6e6e6e;
+  color: #fff;
+}
 .remove-filter {
   width: fit-content;
   padding: 0 10px;
@@ -359,11 +388,19 @@ input:focus {
   border: #EAEAEA 1px solid;
   border-radius: 20px;
   font-weight: 400;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  cursor: pointer;
 }
 .remove-filter:hover {
   background-color: #d5d5d5;
   border-color: #d5d5d5;
-  cursor: pointer;
+}
+.remove-filter:focus {
+  background-color: #EAEAEA; /* reset to default */
+  border-color: #EAEAEA;
+  outline: none;
 }
 .remove-filter:active {
   background-color: #bfbfbf;  /* Slightly darker than hover */
@@ -469,6 +506,13 @@ input:focus {
   height: 40px;
   width: 40px;
   border: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.close-menu-button:focus {
+  background-color: transparent;
+  outline: none;
 }
 .close-menu-button img {
   height: 16px;
@@ -562,6 +606,14 @@ input:focus {
   height: 40px;
   font-weight: 300;
   font-size: 12px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.pagination-wrap button:focus {
+  background-color: transparent; /* reset to default if changed */
+  border-bottom-color: #dadada;  /* reset border color */
+  outline: none;
 }
 .pagination-wrap button:hover {
   background-color: #f5f5f5;
@@ -740,6 +792,13 @@ input:focus {
   color: #686868;
   border: #e1e1e1 1px solid;
   transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.shoe-size-options button:focus {
+  color: #686868;          /* reset to normal */
+  border-color: #e1e1e1;   /* reset to normal */
+  outline: none;
 }
 .shoe-size-options button.active {
   border: #111111 2px solid !important;
@@ -760,6 +819,14 @@ input:focus {
   color: #fff;
   background-color: #111111;
   letter-spacing: 1.5px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.add-to-cart-button:focus {
+  background-color: #111111; /* reset to default */
+  color: #fff;
+  outline: none;
 }
 .add-to-cart-button:hover {
   background-color: #8a8a8a;
@@ -934,6 +1001,13 @@ input:focus {
   width: 40px;
   border: none;
   margin-right: 14px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.close-cart-panel:focus {
+  background-color: transparent; /* reset any focus bg */
+  outline: none;
 }
 .close-cart-panel img {
   height: 16px;
@@ -1005,6 +1079,14 @@ input:focus {
   color: #686868;
   font-family: revert;
   border-radius: 0;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.quantity-selector button:focus {
+  color: #686868;          /* reset to normal */
+  background-color: transparent;
+  outline: none;
 }
 .quantity-selector button:hover {
   color: #444444;              /* Darker shade for emphasis */
@@ -1035,6 +1117,21 @@ input:focus {
   border: none;
   color: #686868;
   text-underline-offset: 4px; 
+  transition: color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.remove-item:focus {
+  color: #686868;          /* reset to default */
+  outline: none;
+}
+.remove-item:hover {
+  color: #444;
+}
+.remove-item:active {
+  color: #222;
+  transform: scale(0.98);      /* Slightly shrink for pressed effect */
+  transition: transform 0.1s;
 }
 .cart-summary {
   display: flex;
@@ -1093,6 +1190,13 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.payment button:focus {
+  background-color: transparent; /* reset if needed */
+  outline: none;
 }
 .payment button:hover {
   border-color: #999;
@@ -1115,6 +1219,14 @@ input:focus {
   font-size: 12.5px;
   border: none;
   cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.checkout:focus {
+  background-color: #111111; /* reset if needed */
+  color: #fff;
+  outline: none;
 }
 .checkout:hover {
   background-color: #8a8a8a !important;
@@ -1280,6 +1392,13 @@ input:focus {
   cursor: pointer;
   transition: background 0.3s;
   margin: 2px 0 8px 0;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+.login-button:focus {
+  background: #111111; /* Reset to default */
+  color: #fff;
+  outline: none;
 }
 .login-button:hover {
   background-color: #8a8a8a;

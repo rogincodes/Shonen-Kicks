@@ -2,7 +2,7 @@
 
 Welcome to **Shonen Kicks**! Your next legendary pair awaits. Step into the world of Shonen Kicks.
 
-🔗 **[Visit Shonen Kicks](https://rogincodes.github.io/Shonen-Kicks/)**
+🔗 **[Visit Shonen Kicks](https://shonen-kicks.vercel.app/)**
 
 > **Note:** This website is hosted on GitHub Pages’ free plan, so image loading might take a little longer than usual.
 

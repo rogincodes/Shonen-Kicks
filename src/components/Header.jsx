@@ -95,7 +95,7 @@ export default function Header({ shoes, category }) {
         <div className="head-menu">
           {/* LOGO */}
           <div className="logo">
-            <a href="https://rogincodes.github.io/Shonen-Kicks/">
+            <a href="https://shonen-kicks.vercel.app/">
               <img src="logos/header-logo.png" alt="Shonen Kicks" />
             </a>
           </div>

@@ -4,7 +4,7 @@ Welcome to **Shonen Kicks**! Your next legendary pair awaits. Step into the worl
 
 🔗 **[Visit Shonen Kicks](https://rogincodes.github.io/Shonen-Kicks/)**
 
-> **Note**: This website is hosted on GitHub Pages’ free plan, so image loading might take a little longer than usual.
+> **Note:** This website is hosted on GitHub Pages’ free plan, so image loading might take a little longer than usual.
 
 ## 🚀 Features
 
@@ -68,8 +68,7 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 
 - **React.js** for building a dynamic and responsive user interface
 - **Vite** for fast and efficient development environment
-- **CSS** for styling and responsive design
+- **ChatGPT by OpenAI** for generating anime-inspired sneaker visuals and writing sneaker descriptions
 - **Render** for providing reliable hosting services
 - **GitHub Pages**: for easy and free deployment
 - **Icons** used in this project were sourced from various free icon libraries. Thanks to the creators for making these resources available.
-  
